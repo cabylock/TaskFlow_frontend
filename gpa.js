@@ -31,8 +31,8 @@ function updateResults() {
   const classification = getGpaClassification(gpa);
   gpaResult.textContent = `GPA: ${gpa} (${classification})`;
 
-  improveCourses.textContent = `Số môn học cần cải thiện: ${improveList.children.length}`;
-  retakeCourses.textContent = `Số môn học cần học lại: ${retakeList.children.length}`;
+  improveCourses.textContent = `Retake Courses: ${improveList.children.length}`;
+  retakeCourses.textContent = `Repeat Courses: ${retakeList.children.length}`;
 }
 
 function addSubjectToList() {
@@ -91,12 +91,12 @@ function addSubjectToList() {
   // Xử lý danh sách môn học cần cải thiện hoặc học lại
   if (gradeLetter === "D" || gradeLetter === "D+") {
     const item = document.createElement("li");
-    item.textContent = `${subjectName} (${credit} tín chỉ)`;
+    item.textContent = `${subjectName} (${credit} credits)`;
     item.dataset.subjectName = subjectName;
     improveList.appendChild(item);
   } else if (gradeLetter === "F") {
     const item = document.createElement("li");
-    item.textContent = `${subjectName} (${credit} tín chỉ)`;
+    item.textContent = `${subjectName} (${credit} credits)`;
     item.dataset.subjectName = subjectName;
     retakeList.appendChild(item);
   }
@@ -140,8 +140,8 @@ function resetTable() {
   // Xóa danh sách môn học cần cải thiện và học lại
   improveList.innerHTML = "";
   retakeList.innerHTML = "";
-  improveCourses.textContent = "Số môn học cần cải thiện: 0";
-  retakeCourses.textContent = "Số môn học cần học lại: 0";
+  improveCourses.textContent = "Retake courses: 0";
+  retakeCourses.textContent = "Repeat courses: 0";
 }
 
 document

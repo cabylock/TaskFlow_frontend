@@ -169,17 +169,17 @@ document.addEventListener('DOMContentLoaded', async() => {
         });
 
         // Xử lý sự kiện thay đổi tên dự án
-       projectItem.querySelector('.project-name').addEventListener('input', (e) => {
+       projectItem.querySelector('.project-name').addEventListener('blur', (e) => {
           project.name = e.target.innerText;
           saveProjectsToDatabase(); // Cập nhật database
-          showToast("Thay đổi thành công");
+          showToast("Update successfully");
         });
 
         // Xử lý sự kiện thay đổi level
         projectItem.querySelector('.level-select').addEventListener('change', (e) => {
           project.level = e.target.value;
           saveProjectsToDatabase(); // Cập nhật database
-          showToast("Thay đổi thành công");
+          showToast("Update successfully");
         });
 
 
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', async() => {
           project.startDate = projectItem.querySelector('.start-date').value;
           project.endDate = projectItem.querySelector('.end-date').value;
           saveProjectsToDatabase(); // Cập nhật database
-          showToast("Thay đổi thành công");
+          showToast("Update successful");
           // renderProjectList();
         });
 
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', async() => {
           Tasks.splice(projectIndex, 1);
           renderProjectList();
           saveProjectsToDatabase(); // Cập nhật database
-          showToast("Thay đổi thành công");
+          showToast("Update successfully");
         });
 
         // Xử lý nút Delete File
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', async() => {
               Tasks[projectIndex].files.splice(fileIndex, 1);
               saveProjectsToDatabase(); // Cập nhật database
               renderProjectList(); // Cập nhật lại danh sách dự án sau khi xóa file
-              showToast("Thay đổi thành công");
+              showToast("Update successfully");
             } catch (error) {
               alert('Failed to delete file');
             }

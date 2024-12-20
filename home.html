@@ -124,7 +124,7 @@
           <span class="text text-2">Đăng nhập thành công </span>
         </div>
       </div>
-      <i class="fa-solid fa-xmark close"></i>
+      <button class="fa-solid fa-xmark close">X</button>
 
 
       <div class="progress "></div>
@@ -228,11 +228,13 @@
 
     <!-- overview -->
     <div id="overview_main" style="display: none;">
-      <h1>Overview</h1>
-      <p> binh da o day ?? </p>
+
       <div class="container1">
+        <h1>Overview</h1>
         <div class="charts">
           <canvas id="endedDailyChart"></canvas>
+        </div>
+        <div class="charts">
           <canvas id="endedMonthlyChart"></canvas>
         </div>
         <div class="charts">
@@ -240,7 +242,7 @@
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
 
     <!-- tasks -->
     <div id="task_main" style="display: none;">
@@ -319,24 +321,24 @@
       </div>
 
       <div class="notification_config">
-        <h3>Cài đặt thông báo</h3>
+        <h3>Notification Settings</h3>
 
         <div class="config_item">
-          <label for="notify_days">Nhận thông báo trước:</label>
+          <label for="notify_days">In advance:</label>
           <select id="notify_days">
-            <option value="1">1 ngày</option>
-            <option value="2">2 ngày</option>
-            <option value="5">5 ngày</option>
+            <option value="1">1 day</option>
+            <option value="2">2 days</option>
+            <option value="5">5 days</option>
           </select>
         </div>
 
         <div class="config_item">
-          <label for="notify_time">Giờ thông báo:</label>
+          <label for="notify_time">Notification Time:</label>
           <input type="time" id="notify_time" value="08:00">
         </div>
 
-        <button id="save_notification_settings">Lưu cài đặt</button>
-        <button id="clear_notification_settings">Xóa cài đặt</button>
+        <button id="save_notification_settings">Save settings</button>
+        <button id="clear_notification_settings">Delete settings</button>
       </div>
 
 
@@ -351,7 +353,7 @@
 
       <div id="flashcard_box">
         <!-- Tiêu đề chính -->
-        <h4>Tạo Flashcard</h4>
+        <h4>Flashcard</h4>
 
 
         <!-- Phần Flashcard -->
@@ -367,22 +369,22 @@
             </div>
           </div>
           <div class="flashcard-buttons">
-            <button id="flip-button">Đáp án</button>
-            <button id="next-button">Tiếp theo</button>
-            <button id="previous-button">Quay lại</button>
-            <button id="add-button">Thêm từ vựng</button>
-            <button id="delete-button">Xóa Từ Vựng</button>
+            <button id="flip-button">Answer</button>
+            <button id="next-button">Next</button>
+            <button id="previous-button">Previous</button>
+            <button id="add-button">Add new one</button>
+            <button id="delete-button">Delete</button>
           </div>
         </div>
 
         <!-- Form thêm từ vựng -->
         <div class="add-form" id="add-form">
-          <h2>Thêm từ vựng</h2>
-          <input type="text" id="front-input" placeholder="Từ vựng">
-          <input type="text" id="back-input" placeholder="Nghĩa của từ vựng">
+          <h2>Add new one</h2>
+          <input type="text" id="front-input" placeholder="Front Face">
+          <input type="text" id="back-input" placeholder="Back Face">
           <div class="form-buttons">
-            <button id="save-button">Lưu</button>
-            <button id="cancel-button">Hủy</button>
+            <button id="save-button">Save</button>
+            <button id="cancel-button">Cancel</button>
           </div>
         </div>
 
@@ -394,7 +396,7 @@
     <div id="quiz_main" style="display: none;">
       <!-- Phần Quiz -->
       <div class="quiz-display">
-        <h1 id="question-text">Câu hỏi sẽ hiển thị ở đây</h1>
+        <h1 id="question-text">Questions</h1>
         <div class="answers">
           <button id="answer-A-button">A</button>
           <button id="answer-B-button">B</button>
@@ -403,9 +405,9 @@
         </div>
         <p id="result-text"></p>
         <div class="quiz-buttons">
-          <button id="prev-question-button">Câu trước</button>
-          <button id="next-question-button">Câu tiếp theo</button>
-          <button id="delete-question-button">Xóa câu hỏi</button>
+          <button id="prev-question-button">Previous question</button>
+          <button id="next-question-button">Next question</button>
+          <button id="delete-question-button">Delete question</button>
         </div>
       </div>
 
@@ -413,14 +415,14 @@
       <div id="quiz_box">
         <div class="quiz-form">
 
-          <h2>Thêm câu hỏi</h2>
-          <input type="text" id="question-input" placeholder="Nhập câu hỏi">
-          <input type="text" id="answer-A-input" placeholder="Đáp án A">
-          <input type="text" id="answer-B-input" placeholder="Đáp án B">
-          <input type="text" id="answer-C-input" placeholder="Đáp án C">
-          <input type="text" id="answer-D-input" placeholder="Đáp án D">
+          <h2>Add more questions</h2>
+          <input type="text" id="question-input" placeholder="Enter new question">
+          <input type="text" id="answer-A-input" placeholder="Answer A">
+          <input type="text" id="answer-B-input" placeholder="Answer B">
+          <input type="text" id="answer-C-input" placeholder="Answer C">
+          <input type="text" id="answer-D-input" placeholder="Answer D">
           <select id="correct-answer-input">
-            <option value="">Chọn đáp án đúng</option>
+            <option value="">Choose right answer</option>
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -437,41 +439,41 @@
     <div id="gpa_main" style="display: none;">
 
       <div class="container">
-        <h1>Công cụ tính điểm trung bình môn học</h1>
+        <h1>Gpa caculator</h1>
         <form id="gradeForm">
           <div class="form-row">
-            <input type="text" id="subjectName" placeholder="Tên môn học" required>
-            <input type="number" id="credit" placeholder="Số tín chỉ" min="1" required>
-            <input type="number" id="componentScore" placeholder="Điểm thành phần (10%)" min="0" max="10" step="0.1"
+            <input type="text" id="subjectName" placeholder="Subject Name" required>
+            <input type="number" id="credit" placeholder="credit" min="1" required>
+            <input type="number" id="componentScore" placeholder="Component Grade (10%)" min="0" max="10" step="0.1"
               required>
-            <input type="number" id="midtermScore" placeholder="Điểm giữa kỳ (30%)" min="0" max="10" step="0.1"
+            <input type="number" id="midtermScore" placeholder="Midterm Grade (30%)" min="0" max="10" step="0.1"
               required>
-            <input type="number" id="finalScore" placeholder="Điểm cuối kỳ (60%)" min="0" max="10" step="0.1" required>
+            <input type="number" id="finalScore" placeholder="Final Grade (60%)" min="0" max="10" step="0.1" required>
           </div>
           <button type="button" class="button-container" id="addSubject">Thêm vào danh sách</button>
         </form>
-        <h2>Danh sách môn học</h2>
+        <button id="resetTable" >Reset Table</button>
+        <h2>Subjects List</h2>
         <div class="button-container">
-          <button id="resetTable">Làm mới bảng</button>
         </div>
         <table id="subjectTable">
           <thead>
             <tr>
-              <th>Tên môn</th>
-              <th>Tín chỉ</th>
-              <th>Điểm hệ 10</th>
-              <th>Điểm chữ</th>
-              <th>Điểm hệ 4</th>
-              <th>Hành động</th>
+              <th>Subject Name</th>
+              <th>Credit</th>
+              <th>GPA out of 10</th>
+              <th>Letter Grade</th>
+              <th>GPA out of 4</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
         <div class="results">
           <h2 id="gpaResult">GPA: </h2>
-          <h3 id="improveCourses">Số môn học cần cải thiện: 0</h3>
+          <h3 id="improveCourses">Retake course: 0</h3>
           <ul id="improveList"></ul>
-          <h3 id="retakeCourses">Số môn học cần học lại: 0</h3>
+          <h3 id="retakeCourses">Repeat course: 0</h3>
           <ul id="retakeList"></ul>
         </div>
       </div>
@@ -594,17 +596,24 @@
         </div>
     
         <div class="faq-question">
-          <h2>How do I create a new task?</h2>
-          <p>To create a new task, click on the "Tasks" button in the sidebar, then click on the "Add Task" button. Fill in the task details and click on the "Save" button to create the task.</p>
+          <h2>How do I distinguish level of task</h2>
+          <p>
+            In the Tasks or Notifications, you can see the level of task by the color of the task:
+            <ul>
+              <li><strong style="color: red;">Red:</strong> High priority</li>
+              <li><strong style="color: orange;">Orange:</strong> Medium priority</li>
+              <li><strong style="color: green;">Green:</strong> Low priority</li>
+            </ul>
+          </p>
         </div>
     
         <div class="faq-question">
           <h2>How do I search for an event quickly?</h2>
           <p>Look at the calendar. You will see some days marked with events. Click on a marked day to see the event details.</p>
           <ul>
-            <li><strong>Green:</strong> Event is running</li>
-            <li><strong>Orange:</strong> Event is ending</li>
-            <li><strong>Red:</strong> Both of them</li>
+            <li><strong style="color: green;">Green:</strong> Event is running</li>
+            <li><strong style="color: orange;">Orange:</strong> Event is ending</li>
+            <li><strong style="color: red;">Red:</strong> Both of them</li>
           </ul>
         </div>
     
@@ -622,8 +631,14 @@
           <h2>How do I change the background color?</h2>
           <p>To change the background color, click on the "Profile" button in the sidebar, then select a new background color from the "Background" dropdown menu. Click on the "Save" button to update the background color.</p>
         </div>
+    
+        <!-- Move feedback button here -->
+        <button class="feedback-button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdF51aLO52lAAoM5_-B25dzXZ3gDHfCG2iZcxrqumjirRFsuA/viewform?usp=sharing', '_blank')">
+          Give Us Feedback
+        </button>
       </div>
     </div>
+    
     
 
 

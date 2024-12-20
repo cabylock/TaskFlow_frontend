@@ -31,7 +31,7 @@ function addVideoToPlaylist(playlistIndex, video) {
         playlists[playlistIndex].videos.splice(videoIndex, 1); // Xóa video khỏi mảng
         videoItem.remove(); // Xóa phần tử DOM
         update_database();
-        showToast('Xóa video thành công');
+        showToast('Delete video successfully');
     });
 
     // edit tên video
@@ -44,7 +44,7 @@ function addVideoToPlaylist(playlistIndex, video) {
         if (Number.isInteger(playlistIndex) && Number.isInteger(videoIndex)) {
             playlists[playlistIndex].videos[videoIndex].name = this.textContent.trim();
             update_database(); // Cập nhật database
-            showToast('Cập nhật tên video thành công');         
+            showToast('Update video name successfully');         
         } else {
             console.error('Invalid playlistIndex or videoIndex');
         }
@@ -83,7 +83,7 @@ function renderPlaylists() {
             const index = this.parentElement.parentElement.getAttribute('data-index');
             playlists[index].name = this.textContent.trim();
             update_database(); // Cập nhật database
-            showToast('Cập nhật tên playlist thành công');
+            showToast('Update playlist name successfully');
         });
 
         // Xử lý xóa playlist
@@ -92,7 +92,7 @@ function renderPlaylists() {
             playlists.splice(index, 1); // Xóa playlist khỏi mảng
             playlistElement.remove(); // Xóa playlist khỏi DOM
             update_database(); // Cập nhật database
-            showToast('Xóa playlist thành công');
+            showToast('Delete playlist successfully');
         });
 
         // Xử lý upload video
@@ -109,7 +109,7 @@ function renderPlaylists() {
                     formData.append('folder', 'video');
 
                     try {
-                        showToast('Đang upload video');
+                        showToast('Uploading video...');
                         const response = await fetch('https://back-end-ocean.up.railway.app/storage/upload', {
                             method: 'POST',
                             body: formData,
@@ -117,7 +117,7 @@ function renderPlaylists() {
                         
                         
                         if (!response.ok) {
-                            showToast('Lỗi upload video');
+                            showToast('Error uploading video');
 
                         }
 
@@ -135,10 +135,10 @@ function renderPlaylists() {
                     } 
                     catch (error) {
                        
-                        showToast('Lỗi upload video');
+                        showToast('Error uploading video');
                     }
                     finally {
-                        showToast('Upload video thành công');
+                        showToast('Upload video successfully');
                     }
                 }
             });

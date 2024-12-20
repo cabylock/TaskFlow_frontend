@@ -3,53 +3,78 @@
    font-family: Arial, sans-serif;
    color: #333;
    margin: 20px;
- }
+}
 
- .faq-container {
+.faq-container {
    max-width: 800px;
    margin: 0 auto;
    padding: 20px;
    background-color: #f9f9f9;
    border-radius: 8px;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
- }
+}
 
- .faq-container h1 {
+.faq-container h1 {
    text-align: center;
    color: #0056b3;
    margin-bottom: 20px;
- }
+}
 
- .faq-question {
+.faq-question {
    margin-bottom: 20px;
    border-bottom: 1px solid #ddd;
    padding-bottom: 10px;
- }
+}
 
- .faq-question h2 {
+.faq-question h2 {
    font-size: 1.25em;
    color: #0056b3;
- }
+}
 
- .faq-question p {
+.faq-question p {
    font-size: 1em;
    line-height: 1.5;
    margin: 5px 0;
- }
+}
 
- .faq-question ul {
+.faq-question ul {
    list-style-type: none;
    padding: 0;
    margin: 10px 0;
- }
+}
 
- .faq-question ul li {
+.faq-question ul li {
    font-size: 1em;
    margin: 5px 0;
- }
+}
 
- .faq-question ul li strong {
+.faq-question ul li strong {
    color: #0056b3;
- }
+}
 
+/* Style for the feedback button */
+.feedback-button {
+   background-color: #4CAF50; /* Green background */
+   color: white; /* White text */
+   border: none; /* No borders */
+   padding: 15px 32px; /* Padding around the text */
+   text-align: center; /* Center the text */
+   text-decoration: none; /* Remove underline */
+   display: block; /* Make the button a block element */
+   font-size: 16px; /* Font size */
+   border-radius: 8px; /* Rounded corners */
+   cursor: pointer; /* Pointer cursor on hover */
+   transition: background-color 0.3s ease, transform 0.3s ease; /* Animation */
+   margin: 20px auto; /* Center the button and add margin */
+}
 
+/* Hover effect */
+.feedback-button:hover {
+   background-color: #45a049; /* Darker green on hover */
+   transform: scale(1.05); /* Slightly enlarge button */
+}
+
+/* Focus effect */
+.feedback-button:focus {
+   outline: none; /* Remove focus outline */
+}

@@ -38,31 +38,31 @@ function filterEvents() {
             const selectedWeek = getWeekNumber(selectedDate);
             
             if (selectedWeek === getWeekNumber(eventStart)) {
-                displayNotifications(event.name,"Bắt đầu",event.level,eventStart,event.completed_start,index);
+                displayNotifications(event.name,"Start",event.level,eventStart,event.completed_start,index);
             }
             if (selectedWeek === getWeekNumber(eventEnd)) {
-                displayNotifications(event.name,"Kết thúc",event.level,eventEnd,event.completed_end,index);
+                displayNotifications(event.name,"End",event.level,eventEnd,event.completed_end,index);
             }
         }
         else if (timeFilter === "month") {
             if (selectedDate.getFullYear() === eventStart.getFullYear() && selectedDate.getMonth() === eventStart.getMonth()) {
-                displayNotifications(event.name,"Bắt đầu",event.level,eventStart,event.completed_start,index);
+                displayNotifications(event.name,"Start",event.level,eventStart,event.completed_start,index);
             }
             if (selectedDate.getFullYear() === eventEnd.getFullYear() && selectedDate.getMonth() === eventEnd.getMonth()) {
-                displayNotifications(event.name,"Kết thúc",event.level,eventEnd,event.completed_end,index);
+                displayNotifications(event.name,"End",event.level,eventEnd,event.completed_end,index);
             }
         }
         else if (timeFilter === "year") {
             if (selectedDate.getFullYear() === eventStart.getFullYear()) {
-                displayNotifications(event.name,"Bắt đầu",event.level,eventStart,event.completed_start,index);
+                displayNotifications(event.name,"Start",event.level,eventStart,event.completed_start,index);
             }
             if (selectedDate.getFullYear() === eventEnd.getFullYear()) {
-                displayNotifications(event.name,"Kết thúc",event.level,eventEnd,event.completed_end,index);
+                displayNotifications(event.name,"End",event.level,eventEnd,event.completed_end,index);
             }
         }
         else if (timeFilter === "all_time") {
-            displayNotifications(event.name,"Bắt đầu",event.level,eventStart,event.completed_start,index);
-            displayNotifications(event.name,"Kết thúc",event.level,eventEnd,event.completed_end,index);
+            displayNotifications(event.name,"Start",event.level,eventStart,event.completed_start,index);
+            displayNotifications(event.name,"End",event.level,eventEnd,event.completed_end,index);
             
         }
         
@@ -87,8 +87,8 @@ function displayNotifications(name,status,level,date,completed,index) {
         date = new Date(date);
         const eventHTML = `
            <p>
-               <strong>Sự kiện:</strong> ${name} <br>
-               <strong>${status} vào ngày:</strong> ${DateForNotification(date)}
+               <strong>Event:</strong> ${name} <br>
+               <strong>${status} on :</strong> ${DateForNotification(date)}
            </p>
        `;
         notification.innerHTML = eventHTML;
@@ -102,7 +102,7 @@ function displayNotifications(name,status,level,date,completed,index) {
             if (e.target.checked) {
                 notification.style.opacity = "0.6";
                 notificationDoneBox.insertBefore(notification, notificationDoneBox.firstChild); // Thêm vào đầu danh sách
-                if (status === "Bắt đầu") {
+                if (status === "Start") {
                     Tasks[index].completed_start = true;
                 }
                 else {
@@ -115,7 +115,7 @@ function displayNotifications(name,status,level,date,completed,index) {
             else {
                 notification.style.opacity = "1";
                 notificationList.appendChild(notification);
-                if (status === "Bắt đầu") {
+                if (status === "Start") {
                     Tasks[index].completed_start = false;
                 }
                 else {
@@ -162,11 +162,11 @@ function scheduleNotifications() {
 
         // Hiển thị thông báo nếu thời gian thỏa mãn điều kiện
         if (notificationTimeStart > now && notificationTimeStart <= now) {
-            showToast(`${event.name} sẽ bắt đầu vào ${DateForNotification(eventStart)}`, 2000);
+            showToast(`${event.name} will Start one ${DateForNotification(eventStart)}`, 2000);
         }
         
         if (notificationTimeEnd > now && notificationTimeEnd <= now) {
-            showToast(`${event.name} sẽ kết thúc vào ${DateForNotification(eventEnd)}`,2000);
+            showToast(`${event.name} will End on ${DateForNotification(eventEnd)}`,2000);
         }
     });
 }
@@ -176,7 +176,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
     const notifyTime = document.getElementById("notify_time").value;
     localStorage.setItem("notify_days", notifyDays);
     localStorage.setItem("notify_time", notifyTime);
-    showToast(`Đã lưu cài đặt thông báo: trước ${notifyDays} ngày vào ${notifyTime}`);
+    showToast(`Save notification: before ${notifyDays} at ${notifyTime}`);
 
     // Schedule or update notifications via backend
     Tasks.forEach((event) => {
@@ -241,7 +241,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                 })
                 .catch(error => {
                     console.error('Error cancelling notifications:', error);
-                    showToast("Lỗi khi hủy thông báo");
+                    showToast("Error cancelling notifications");
                 });
             
                 showNotification = false;
@@ -290,7 +290,7 @@ document.getElementById('clear_notification_settings').addEventListener('click',
     })
     .catch(error => {
         console.error('Error cancelling notifications:', error);
-        showToast("Lỗi khi hủy thông báo");
+        showToast("Error cancelling notifications");
     });
 
     showNotification = false;

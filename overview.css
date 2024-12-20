@@ -1,27 +1,48 @@
-body {
+#overview_main {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #0f172a;
+    color: #e2e8f0;
   }
-  .container {
+  .container1 {
     width: 90%;
     margin: 0 auto;
     padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   h1 {
     text-align: center;
     margin-bottom: 30px;
+    color: #e2e8f0;
+    font-size: 50px;
   }
   .charts {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    background-color: #2d3748;
+    padding: 16px;
+    border-radius: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    /* Khi màn hình ở độ phân giải md (tablet trở lên), 2 cột */
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    /* Khi màn hình ở độ phân giải lg (máy tính để bàn trở lên), 3 cột */
+    .container {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   canvas {
     max-width: 600px;
     width: 100%;
   }
-  

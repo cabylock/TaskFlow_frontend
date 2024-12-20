@@ -10,7 +10,7 @@ const endedMonthlyData = Array.from({ length: 12 }, () => Math.floor(Math.random
 const taskStatusData = {
   running: 10,  // Task đang chạy
   ended: 20,    // Task đã hoàn thành
-  comming: 5    // Task sắp đến
+  coming: 5    // Task sắp đến
 };
 
 // === Biểu đồ cột: Task "ended" theo ngày trong tháng ===
@@ -67,10 +67,10 @@ const endedMonthlyChart = new Chart(document.getElementById('endedMonthlyChart')
 const statusPieChart = new Chart(document.getElementById('statusPieChart'), {
   type: 'pie',
   data: {
-    labels: ['Running', 'Ended', 'Comming'],
+    labels: ['Running', 'Ended', 'Coming'],
     datasets: [{
       label: 'Task Status',
-      data: [taskStatusData.running, taskStatusData.ended, taskStatusData.comming],
+      data: [taskStatusData.running, taskStatusData.ended, taskStatusData.coming],
       backgroundColor: [
         'rgba(75, 192, 192, 0.6)', // Running
         'rgba(255, 159, 64, 0.6)', // Ended

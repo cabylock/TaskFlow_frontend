@@ -15,7 +15,7 @@ const buttonIds = [
 
 const timeSpent = { total: 0 }; // Object để lưu thời gian sử dụng cho từng mục
 let currentButtonId = null; // Mục hiện tại
-let startTime = null; // Thời gian bắt đầu của mục hiện tại
+let startTime = null; // Thời gian Start của mục hiện tại
 
 buttonIds.forEach(buttonId => {
     timeSpent[buttonId] = 0; // Mặc định thời gian là 0
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
 
-            // Cập nhật mục hiện tại và thời gian bắt đầu
+            // Cập nhật mục hiện tại và thời gian Start
             currentButtonId = buttonId;
             startTime = now;
 
@@ -167,21 +167,30 @@ const toast = document.querySelector(".toast"),
 
 // Hàm hiển thị thông báo với tham số message
 function showToast(message,time = 5000) {
-    text2.textContent = message; // Gán nội dung thông báo vào text-2
+    
 
     
 
 
-    toast.classList.add("active");
-    progress.classList.add("active");
+    clearTimeout(timer1);
+    clearTimeout(timer2);
 
-    timer1 = setTimeout(() => {
-        toast.classList.remove("active");
-    }, time); // 5s = 5000 milliseconds
+    
+    setTimeout(() => {
+        text2.textContent = message; // Gán nội dung thông báo vào text-2
 
-    timer2 = setTimeout(() => {
-        progress.classList.remove("active");
-    }, time+300); // 5s + 300ms = 5300 milliseconds
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, time); // 5s = 5000 milliseconds
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        }, time + 300); // 5s + 300ms = 5300 milliseconds
+    }, 0); // Đặt lại tiến trình ngay lập tức
+
 }
 
 // Khi người dùng bấm vào biểu tượng đóng, ẩn thông báo
