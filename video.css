@@ -1,0 +1,193 @@
+/* Container chính */
+#video_main {
+   
+   padding: 20px;
+   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(168, 238, 180) 100%);
+   gap: 20px;
+   height: 100vh;
+   
+   
+}
+
+
+.playlist_box{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 800px;
+   margin-left: 85px;
+}
+
+/* Phần nhập playlist */
+.input_playlist {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   
+   width: 500px;
+   
+   gap: 10px;
+}
+
+#playlist_name {
+   margin-top: 5px;
+   padding: 10px;
+   font-size: 16px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#add_playlist_button {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#add_playlist_button:hover {
+   background-color: #0056b3;
+}
+
+/* Playlist container */
+.playlist_container {
+   
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+   width: 800px;
+   gap:30px;
+   margin-top: 20px;
+   
+}
+
+
+
+/* Mỗi playlist */
+.playlist {
+   padding: 20px;
+   background-color: #ffffff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header playlist */
+.playlist-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 15px;
+}
+
+.playlist-header h2 {
+   margin: 0;
+   font-size: 18px;
+   font-weight: 500;
+   color: #333;
+   flex: 1;
+}
+
+.remove-playlist-button {
+   background-color: #dc3545;
+   color: white;
+   border: none;
+   padding: 5px 10px;
+   font-size: 14px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.remove-playlist-button:hover {
+   background-color: #c82333;
+}
+
+/* Phần nhập video */
+.playlist-inputs {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 15px;
+}
+
+.video-link-input {
+   flex: 1;
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.add-link-button,
+.upload-video-button {
+   padding: 10px 15px;
+   font-size: 14px;
+   background-color: #28a745;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.add-link-button:hover,
+.upload-video-button:hover {
+   background-color: #218838;
+}
+
+/* Danh sách video */
+.playlist-videos {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   height: 300px;
+   overflow-y: auto;
+   gap: 15px;
+}
+
+.playlist-videos li {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   padding: 15px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-videos h3 {
+   margin: 0;
+   font-size: 16px;
+   color: #333;
+   flex: 1;
+}
+
+.playlist-videos iframe,
+.playlist-videos audio {
+   width: 100%;
+   max-width: 600px;
+   border-radius: 5px;
+}
+
+.remove-video-button {
+   align-self: flex-end;
+   padding: 5px 10px;
+   font-size: 14px;
+   background-color: #dc3545;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.remove-video-button:hover {
+   background-color: #c82333;
+}

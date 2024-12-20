@@ -1,0 +1,316 @@
+/* Container chính */
+#flashcard_main, #quiz_main {
+    width: 95%;
+    margin-top: 40px;
+    margin-left: 85px;
+    justify-content: space-between; /* Chia đều không gian giữa flashcard_box và quiz_box */
+    gap: 30px; /* Khoảng cách giữa flashcard_box và quiz_box */
+    
+}
+
+
+
+/* Box Flashcard */
+#flashcard_box {
+    flex: 1; /* Chiếm 50% chiều rộng */
+    max-width:1000px;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    align-items: center;
+    margin-left:85px;
+  
+}
+
+#flashcard_box h4 {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Box Quiz */
+#quiz_box {
+    flex: 1; /* Chiếm 50% chiều rộng */
+    max-width: 700px;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quiz_box h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+/* Phần Flashcard */
+.flashcard-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.flashcard {
+    width: 100%;
+    height: 300px;
+    perspective: 1000px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+
+     
+
+}
+
+.flashcard .front,
+.flashcard .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Ẩn mặt sau khi xoay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+   background: linear-gradient(135deg, #00c6ff, #9d91b0);
+    word-wrap: break-word; /* Đảm bảo từ dài sẽ xuống dòng */
+    word-break: break-word; /* Bẻ từ nếu quá dài */
+    white-space: pre-line; /* Giữ lại các dòng mới và tự động xuống dòng */
+    padding:10px;
+     display: flex;
+  flex-direction: column; /* Arrange items horizontally */
+  gap: 10px; /* Add some space between the number and text */
+}
+.flashcard .back {
+ 
+  transform: rotateY(180deg); /* Chỉ xoay mặt sau, không cần xoay thêm lần thứ hai */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backface-visibility: hidden; /* Đảm bảo mặt sau không hiển thị khi xoay */
+   background: linear-gradient(135deg, #ff6a00, #ee0979);
+}
+
+
+ .flashcard.flip {
+  transform: rotateY(180deg); /* Xoay Flashcard khi lật */
+}
+
+
+/* Nút Flashcard */
+.flashcard-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.flashcard-container button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff5722, #ff9800); /* Màu cam */
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.flashcard-buttons button:hover {
+    background: linear-gradient(135deg, #e9a353, #ff6f00);
+}#card-number, #card-number-back {
+    font-size: 36px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+}
+
+
+/* Form Thêm Từ Vựng */
+.add-form {
+    width: 400px;
+    background: linear-gradient(135deg, #c3e8ff, #eaf9ff,#fa709a,#fee140); /* Gradient xanh nhạt */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.add-form h2 {
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+h5{
+     font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: bold;
+}
+.add-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-form .form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #4caf50, #009dff);
+    color: #fff;
+    cursor: pointer;
+}
+
+.add-form button:hover {
+    background: linear-gradient(135deg, #dde0de, #07b9ff);
+}
+
+/* Phần Quiz */
+.quiz-display {
+    width: 500px;
+
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #fa709a, #fee140);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.quiz-display h1 {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.quiz-display .answers {
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    
+}
+
+.quiz-display .answers button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #fa709a, #fee140);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-display .answers button:hover {
+    background: linear-gradient(135deg, #dce224, #f511de);
+}
+
+.quiz-display .quiz-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.quiz-display .quiz-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #4caf50, #fcba05);
+    color: #fff;
+    cursor: pointer;
+}
+
+.quiz-display .quiz-buttons button:hover {
+    background: linear-gradient(135deg, #3e8e41, #aaff00);
+}
+
+/* Form Thêm Câu Hỏi */
+.quiz-form {
+    width: 400px;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Gradient xanh tươi */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  
+}
+
+.quiz-form input, .quiz-form select {
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.quiz-form button {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #ff5722, #ff9800); /* Màu cam */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.quiz-form button:hover {
+    background: linear-gradient(135deg, #e64a19, #ff6f00);
+}
+/* Đảm bảo câu hỏi và đáp án xuống dòng nếu cần */
+#question-text, 
+#answer-A-button, 
+#answer-B-button, 
+#answer-C-button, 
+#answer-D-button {
+  white-space: pre-line; /* Giữ lại các dòng mới và tự động xuống dòng */
+  word-wrap: break-word; /* Nếu từ quá dài, tự động xuống dòng */
+  word-break: break-word; /* Đảm bảo các từ dài không bị vỡ */
+  max-width: 100%; /* Đảm bảo chiều rộng tối đa */
+  padding: 10px;
+  box-sizing: border-box;
+}

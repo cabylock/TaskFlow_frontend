@@ -1,0 +1,282 @@
+/* Importing Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+body.light_mode {
+  background-color: white;
+  color: black;
+}
+body.dark_mode {
+  background-color: black;
+  color: white;
+}
+
+
+body.dark_mode #profile_main label {
+  color: white;
+
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 85px;
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: column;
+  background: #161a2d;
+  padding: 25px 20px;
+  transition: all 0.4s ease;
+}
+
+.sidebar:hover {
+  width: 250px;
+  
+}
+
+.sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.sidebar .sidebar-header h2 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 23px;
+}
+
+.sidebar-links h4 {
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+  margin: 10px 0;
+  position: relative;
+}
+
+.sidebar-links h4 span {
+  opacity: 0;
+}
+
+.sidebar:hover .sidebar-links h4 span {
+  opacity: 1;
+}
+
+.sidebar-links button:hover {
+   background-color: #f0f0f0;
+ }
+.sidebar-links button {
+   background: none;
+   border-radius: 5px;
+   border: none;
+   color: inherit;
+   font: inherit;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   width: 100%;
+   text-align: left;
+   text-decoration: none;
+ }
+
+.sidebar-links h4::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(1);
+  transform: translateY(-50%);
+  background: #202384;
+  transform-origin: right;
+  transition-delay: 0.2s;
+}
+
+/* xóa thanh scroll và chỉnh độ rộng  */
+.sidebar-links {
+  list-style: none;
+  margin-top: 20px;
+  height: 90%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  color: #add0f8;
+}
+
+/* thẻ button trong li  ở trong side bar */
+.sidebar-links li button {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  gap: 0 20px;
+  color: #add0f8;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 15px 10px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+/* design for link */
+.sidebar-links li a {
+   display: flex;
+   align-items: center;
+   gap: 0 20px;
+   color: #add0f8;
+   font-weight: 500;
+   white-space: nowrap;
+   padding: 15px 10px;
+   text-decoration: none;
+   transition: 0.2s ease;
+}
+
+/* design for main_contet  */
+.main-content {
+  
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.4s ease; /* Thêm transition để có hiệu ứng mượt */
+}
+
+/* Khi sidebar mở rộng */
+.sidebar:hover + .main-content {
+  margin-left: 250px; /* Dịch main-content sang khi sidebar mở rộng */
+}
+
+/* message bar */
+
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  border-radius: 12px;
+  background:white;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+  transform: translateX(0%);
+}
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: #4070f4;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: #333;
+}
+
+.toast .close {
+  position:absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  color: red;
+  
+}
+
+.toast .close:hover {
+  opacity: 0.7;
+  
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #4070f4;
+}
+
+.progress.active:before {
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+
+/* extension bar */
+.extension-menu:hover #extension_submenu {
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+#extension_submenu {
+  display: none;
+  margin-left: 20px;
+  list-style-type: none;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.extension-menu:hover #extension_submenu {
+  opacity: 1;
+}
+
+#extension_submenu li {
+  margin: 5px 0;
+}

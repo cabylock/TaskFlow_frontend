@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-signin-client_id"
+    content="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com">
+  <title>Task Flow</title>
+  <!-- Linking Google Font Link For Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="profile.css" />
+  <link rel="stylesheet" href="video.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="task.css" />
+  <link rel="stylesheet" href="extension.css" />
+  <link rel="stylesheet" href="notification.css" />
+  <link rel="stylesheet" href="gpa.css" />
+</head>
+
+<body id="body">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+
+    </div>
+    <ul class="sidebar-links">
+
+      <h4>
+        <span>Main Menu</span>
+      </h4>
+
+      <li>
+        <button id="dashboard_button">
+          <span class="material-symbols-outlined"> dashboard </span>Dashboard</a>
+        </button>
+      </li>
+      <li>
+        <button id="overview_button"><span class="material-symbols-outlined"> overview </span>Overview</a>
+        </button>
+      </li>
+
+      <li>
+        <button id="task_button"><span class="material-symbols-outlined"> folder </span>Tasks</a>
+        </button>
+      </li>
+      <li>
+        <button id="notification_button"><span class="material-symbols-outlined"> notifications_active
+          </span>Notifications</a>
+        </button>
+      </li>
+      <h4>
+        <span>Entertainment</span>
+
+      </h4>
+
+      <li class="extension-menu">
+        <button id="extension_button"><span class="material-symbols-outlined"> extension </span>Extensions
+        </button>
+
+        <ul id="extension_submenu">
+          <li>
+            <button id="quiz_button"><span class="material-symbols-outlined"> quiz </span>Quiz</button>
+          </li>
+          <li>
+            <button id="gpa_button"><span class="material-symbols-outlined"> school </span>GPA</button>
+          </li>
+          <li>
+            <button id="flashcard_button"><span class="material-symbols-outlined"> style </span>Flashcard</button>
+          </li>
+        </ul>
+
+
+      </li>
+
+      <li>
+        <button id="video_button"><span class="material-symbols-outlined"> videocam </span>Video</a>
+        </button>
+      </li>
+      <h4>
+
+        <span>Account</span>
+
+      </h4>
+
+      <li>
+        <button id="profile_button"><span class="material-symbols-outlined"> account_circle </span>Profile</a>
+        </button>
+      </li>
+
+
+
+      <li>
+        <button onclick="log_out()"><span class="material-symbols-outlined"> logout </span>Logout</a>
+        </button>
+      </li>
+    </ul>
+
+
+    </div>
+
+    </div>
+  </aside>
+
+  <div class="main-content" id="main_type">
+    <!-- chat bot  -->
+    <script async src="https://js.usechat.ai/widget/c74a716d-0145-425a-9eaa-17a82d04cc3b.js"></script><a
+      id="usechat-button" style="color: #ddd; font-size: 11px;"
+      href="https://app.usechat.ai/widget/c74a716d-0145-425a-9eaa-17a82d04cc3b">UseChat</a>
+
+    <!-- message  bar -->
+    <div class="toast ">
+
+      <div class="toast-content">
+        <i class="fas fa-solid fa-check check"></i>
+
+        <div class="message">
+          <span class="text text-1">Success</span>
+          <span class="text text-2">Đăng nhập thành công </span>
+        </div>
+      </div>
+      <i class="fa-solid fa-xmark close"></i>
+
+
+      <div class="progress "></div>
+    </div>
+
+    <!-- dashboard -->
+    <div id="dashboard_main" style="display: none;">
+
+      <div class="news">
+        <h1>News</h1>
+
+        <iframe style="border-radius: 1%;" width="850" height="650" src="https://rss.app/embed/v1/wall/bpiemFoRV79TJ7cW"
+          frameborder="0"></iframe>
+      </div>
+
+      <div class=calendar_weather style="justify-items: center;">
+
+
+        <div class="weather_container">
+
+          <script>
+            (function (d, s, id) {
+              if (d.getElementById(id)) {
+                if (window.__TOMORROW__) {
+                  window.__TOMORROW__.renderWidget();
+                }
+                return;
+              }
+              const fjs = d.getElementsByTagName(s)[0];
+              const js = d.createElement(s);
+              js.id = id;
+              js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+              fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'tomorrow-sdk');
+          </script>
+
+          <div class="tomorrow" data-location-id="130201" data-language="EN" data-unit-system="METRIC" data-skin="dark"
+            data-widget-type="aqiMini" style="padding-bottom:22px;position:relative;">
+            <a href="https://www.tomorrow.io/weather-api/" rel="nofollow noopener noreferrer" target="_blank"
+              style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+              <img alt="Powered by the Tomorrow.io Weather API"
+                src="https://weather-website-client.tomorrow.io/img/powered-by.svg" width="250" height="18" />
+            </a>
+          </div>
+
+        </div>
+
+
+
+        <div class="calendar_container">
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+          <div class="card">
+            <div class="calendar-toolbar">
+              <button class="prev month-btn">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="current-month"></div>
+              <button class="next month-btn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="calendar">
+              <div class="weekdays">
+                <div class="weekday-name">Mo</div>
+                <div class="weekday-name">Tu</div>
+                <div class="weekday-name">We</div>
+                <div class="weekday-name">Th</div>
+                <div class="weekday-name">Fr</div>
+                <div class="weekday-name">Sa</div>
+                <div class="weekday-name">Su</div>
+              </div>
+              <div class="calendar-days"></div>
+            </div>
+            <div class="goto-buttons">
+              <button type="button" class="btn prev-year">Prev Year</button>
+              <button type="button" class="btn today">Today</button>
+              <button type="button" class="btn next-year">Next Year</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <script src="dashboard.js"></script>
+
+
+
+
+
+
+    </div>
+
+
+
+    <!-- overview -->
+    <div id="overview_main" style="display: none;">
+      <h1>Overview</h1>
+      <p> Here you can view your recent activity and notifications. </p>
+
+
+    </div>
+
+
+    <!-- tasks -->
+    <div id="task_main" style="display: none;">
+      <div>Task Manager</div>
+
+
+
+
+      <div class="task_container">
+
+        <div class="input_task">
+          <input type="text" id="project_name" placeholder="Enter project name">
+          <button id="add_project_button">Add Project</button>
+        </div>
+
+
+        <div class="filter">
+          <label for="progress_filter">Progress:</label>
+          <select id="progress_filter" class="progress">
+            <option value="all">All</option>
+            <option value="Running">RUNNING</option>
+            <option value="Ended">ENDED</option>
+            <option value="Comming">COMMING</option>
+          </select>
+          <label for="level_filter">Priority:</label>
+          <select id="level_filter" class="level">
+            <option value="all">ALL</option>
+            <option value="high" style="color: red;">HIGH</option>
+            <option value="medium" style="color: orange;">MEDIUM</option>
+            <option value="low" style="color: green;">LOW</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Project List -->
+      <div class="project_list"> </div>
+
+    </div>
+
+    <!-- notifications -->
+    <div id="notification_main" style="display: flex; ">
+      <div class="left_notification">
+
+
+        <div id="notification_box">
+          <!-- Bộ lọc ngày và thời gian -->
+          <div class="input_notification">
+            <input type="date" id="date" name="date">
+            <select id="time" name="time">
+              <option value="week">Week</option>
+              <option value="month">Month</option>
+              <option value="year">Year</option>
+              <option value="all_time">All Time</option>
+            </select>
+            <button id="filter_button">Filter</button>
+
+          </div>
+
+        </div>
+
+        <!-- Container thông báo -->
+        <div class="notification_container">
+          <div class="notification_list"></div>
+        </div>
+      </div>
+
+      <div id="notification_done_box" class="notification-box">
+        <h3>Mark Done Notifications</h3>
+        <!-- Container thông báo đã hoàn thành -->
+
+        <div class="notification_done_list"></div>
+
+
+
+      </div>
+
+      <div class="notification_config">
+        <h3>Cài đặt thông báo</h3>
+
+        <div class="config_item">
+          <label for="notify_days">Nhận thông báo trước:</label>
+          <select id="notify_days">
+            <option value="1">1 ngày</option>
+            <option value="2">2 ngày</option>
+            <option value="5">5 ngày</option>
+          </select>
+        </div>
+
+        <div class="config_item">
+          <label for="notify_time">Giờ thông báo:</label>
+          <input type="time" id="notify_time" value="08:00">
+        </div>
+
+        <button id="save_notification_settings">Lưu cài đặt</button>
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- extension -->
+     <!-- flashcard -->
+    <div id="flashcard_main" style="display: none;">
+
+      <div id="flashcard_box">
+        <!-- Tiêu đề chính -->
+        <h4>Tạo Flashcard</h4>
+
+
+        <!-- Phần Flashcard -->
+        <div class="flashcard-container">
+          <div class="flashcard" id="flashcard">
+            <div class="front">
+              <p id="card-number"></p>
+              <h2 id="front-text">Hello</h2>
+            </div>
+            <div class="back">
+              <p id="card-number-back"></p>
+              <h2 id="back-text">Xin chào</h2>
+            </div>
+          </div>
+          <div class="flashcard-buttons">
+            <button id="flip-button">Đáp án</button>
+            <button id="next-button">Tiếp theo</button>
+            <button id="previous-button">Quay lại</button>
+            <button id="add-button">Thêm từ vựng</button>
+            <button id="delete-button">Xóa Từ Vựng</button>
+          </div>
+        </div>
+
+        <!-- Form thêm từ vựng -->
+        <div class="add-form" id="add-form">
+          <h2>Thêm từ vựng</h2>
+          <input type="text" id="front-input" placeholder="Từ vựng">
+          <input type="text" id="back-input" placeholder="Nghĩa của từ vựng">
+          <div class="form-buttons">
+            <button id="save-button">Lưu</button>
+            <button id="cancel-button">Hủy</button>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- quiz -->
+    <div id="quiz_main" style="display: none;">
+      <!-- Phần Quiz -->
+      <div class="quiz-display">
+        <h1 id="question-text">Câu hỏi sẽ hiển thị ở đây</h1>
+        <div class="answers">
+          <button id="answer-A-button">A</button>
+          <button id="answer-B-button">B</button>
+          <button id="answer-C-button">C</button>
+          <button id="answer-D-button">D</button>
+        </div>
+        <p id="result-text"></p>
+        <div class="quiz-buttons">
+          <button id="prev-question-button">Câu trước</button>
+          <button id="next-question-button">Câu tiếp theo</button>
+          <button id="delete-question-button">Xóa câu hỏi</button>
+        </div>
+      </div>
+
+      <!-- Form thêm câu hỏi -->
+      <div id="quiz_box">
+        <div class="quiz-form">
+
+          <h2>Thêm câu hỏi</h2>
+          <input type="text" id="question-input" placeholder="Nhập câu hỏi">
+          <input type="text" id="answer-A-input" placeholder="Đáp án A">
+          <input type="text" id="answer-B-input" placeholder="Đáp án B">
+          <input type="text" id="answer-C-input" placeholder="Đáp án C">
+          <input type="text" id="answer-D-input" placeholder="Đáp án D">
+          <select id="correct-answer-input">
+            <option value="">Chọn đáp án đúng</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+          <button id="save-question-button">Lưu câu hỏi</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- GPA -->
+    <div id="gpa_main" style="display: none;">
+            
+      <div class="container">
+        <h1>Công cụ tính điểm trung bình môn học</h1>
+        <form id="gradeForm">
+          <div class="form-row">
+            <input type="text" id="subjectName" placeholder="Tên môn học" required>
+            <input type="number" id="credit" placeholder="Số tín chỉ" min="1" required>
+            <input type="number" id="componentScore" placeholder="Điểm thành phần (10%)" min="0" max="10" step="0.1" required>
+            <input type="number" id="midtermScore" placeholder="Điểm giữa kỳ (30%)" min="0" max="10" step="0.1" required>
+            <input type="number" id="finalScore" placeholder="Điểm cuối kỳ (60%)" min="0" max="10" step="0.1" required>
+          </div>
+          <button type="button" id="addSubject">Thêm vào danh sách</button>
+        </form>
+        <h2>Danh sách môn học</h2>
+        <div class="button-container">
+          <button id="resetTable">Làm mới bảng</button>
+        </div>
+        <table id="subjectTable">
+          <thead>
+            <tr>
+              <th>Tên môn</th>
+              <th>Tín chỉ</th>
+              <th>Điểm hệ 10</th>
+              <th>Điểm chữ</th>
+              <th>Điểm hệ 4</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="results">
+          <h2 id="gpaResult">GPA: </h2>
+          <h3 id="improveCourses">Số môn học cần cải thiện: 0</h3>
+          <ul id="improveList"></ul>
+          <h3 id="retakeCourses">Số môn học cần học lại: 0</h3>
+          <ul id="retakeList"></ul>
+        </div>
+      </div>
+      </div>
+
+
+
+    <!-- video -->
+    <div id="video_main" style="display: none;">
+
+      <div class="playlist_box">
+        <div class="input_playlist">
+          <button id="add_playlist_button">Add Playlist</button>
+          <input type="text" id="playlist_name" placeholder="Enter playlist name">
+
+        </div>
+
+        <div class="playlist_container"></div>
+
+      </div>
+
+      <div id="chart">
+
+      </div>
+    </div>
+
+
+
+
+    <!-- profile -->
+    <div id="profile_main" style="display: none;">
+
+      <div class="profile-container">
+        <form id="profileForm">
+
+          <div class="profile-image-container">
+            <img id="profileImage" src="assets/bg.jpg">
+            <input type="file" id="profileInput" accept="image/*">
+            <button id="uploadButton"><span class="material-symbols-outlined"> photo_camera </span></button>
+            <!-- Nút nhấn nhỏ -->
+          </div>
+
+          <h1 id="name"></h1>
+
+
+          <label for="name">New Name:</label>
+
+
+          <input type="text" id="new_name" name="new_name">
+
+          <label for="password">New Password:</label>
+          <input type="password" id="new_password" name="new_password" minlength="6">
+
+          <!-- submit button  -->
+          <div>
+
+            <button type="submit" id="submit_button">Change profile</button>
+          </div>
+
+        </form>
+
+        <!-- background change -->
+        <div>
+          <label for="backgroundSelect">Background:</label>
+          <select id="backgroundSelect">
+            <option value="light_mode">Light</option>
+            <option value="dark_mode">Dark</option>
+          </select>
+        </div>
+
+        <!-- code background change -->
+        <script>
+          // Function to set the background mode
+          function setBackgroundMode(mode) {
+
+            var body = document.getElementById('body');
+            if (body) {
+              body.className = mode;
+              document.getElementById('backgroundSelect').value = mode;
+            }
+          }
+
+          // Load the saved background mode from local storage
+          document.addEventListener('DOMContentLoaded', function () {
+            var savedMode = localStorage.getItem('backgroundMode') || 'light_mode';
+            setBackgroundMode(savedMode);
+          });
+
+          // Save the selected background mode to local storage
+          document.getElementById('backgroundSelect').addEventListener('change', function () {
+            var selectedMode = this.value;
+            localStorage.setItem('backgroundMode', selectedMode);
+            setBackgroundMode(selectedMode);
+          });
+        </script>
+
+      </div>
+
+      <!-- description -->
+      <div class="description_container">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50"
+          placeholder="Enter description here"></textarea>
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+</body>
+<script src="home.js"></script>
+<script src="profile.js"></script>
+<script src="video.js"></script>
+<script src="task.js"></script>
+<script src="extension.js"></script>
+<script src="notification.js"></script>
+<script src="gpa.js"></script>
+
+</html>
