@@ -165,7 +165,7 @@ const toast = document.querySelector(".toast"),
 
 
 // Hàm hiển thị thông báo với tham số message
-function showToast(message) {
+function showToast(message,time = 5000) {
     text2.textContent = message; // Gán nội dung thông báo vào text-2
 
     
@@ -176,11 +176,11 @@ function showToast(message) {
 
     timer1 = setTimeout(() => {
         toast.classList.remove("active");
-    }, 5000); // 5s = 5000 milliseconds
+    }, time); // 5s = 5000 milliseconds
 
     timer2 = setTimeout(() => {
         progress.classList.remove("active");
-    }, 5300);
+    }, time+300); // 5s + 300ms = 5300 milliseconds
 }
 
 // Khi người dùng bấm vào biểu tượng đóng, ẩn thông báo

@@ -1,3 +1,6 @@
+const showNotification = true;
+
+
 const notificationList= document.querySelector(".notification_list")
     const notificationDoneBox= document.querySelector(".notification_done_list")
 
@@ -139,29 +142,31 @@ function displayNotifications(name,status,level,date,completed,index) {
 function scheduleNotifications() {
     const notifyDays = parseInt(document.getElementById("notify_days").value, 10);
     const notifyTime = document.getElementById("notify_time").value;
-    const [notifyHour, notifyMinute] = notifyTime.split(":").map(Number);
+    
     const now = new Date();
 
     Tasks.forEach((event) => {
         const eventStart = new Date(event.startDate);
         const eventEnd = new Date(event.endDate);
 
-        // Tính toán thời gian thông báo
+        // Calculate notificationTimeStart
         const notificationTimeStart = new Date(eventStart);
         notificationTimeStart.setDate(notificationTimeStart.getDate() - notifyDays);
-        notificationTimeStart.setHours(notifyHour, notifyMinute, 0);
+        const [notifyHour, notifyMinute] = notifyTime.split(':').map(Number);
+        notificationTimeStart.setHours(notifyHour, notifyMinute, 0, 0);
 
+        // Calculate notificationTimeEnd
         const notificationTimeEnd = new Date(eventEnd);
         notificationTimeEnd.setDate(notificationTimeEnd.getDate() - notifyDays);
-        notificationTimeEnd.setHours(notifyHour, notifyMinute, 0);
+        notificationTimeEnd.setHours(notifyHour, notifyMinute, 0, 0);
 
         // Hiển thị thông báo nếu thời gian thỏa mãn điều kiện
         if (notificationTimeStart > now && notificationTimeStart <= now) {
-            showToast(`${event.name} sẽ bắt đầu vào ${DateForNotification(eventStart)}`);
+            showToast(`${event.name} sẽ bắt đầu vào ${DateForNotification(eventStart)}`, 2000);
         }
         
         if (notificationTimeEnd > now && notificationTimeEnd <= now) {
-            showToast(`${event.name} sẽ kết thúc vào ${DateForNotification(eventEnd)}`);
+            showToast(`${event.name} sẽ kết thúc vào ${DateForNotification(eventEnd)}`,2000);
         }
     });
 }
@@ -206,7 +211,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                     date: notificationTimeStart.toISOString().split('T')[0],
                     time: notifyTime,
                     to: localStorage.getItem('email'),
-                    subject: `Reminder: ${event.name} is starting soon`,
+                    subject: `Reminder: Event ${event.name} is starting soon`,
                     text: `The event ${event.name} is scheduled to start on ${DateForNotification(eventStart)}.`
                 })
             }).then(response => response.json())
@@ -224,7 +229,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                     date: notificationTimeEnd.toISOString().split('T')[0],
                     time: notifyTime,
                     to: localStorage.getItem('email'),
-                    subject: `Reminder: ${event.name} is ending soon`,
+                    subject: `Reminder: Event ${event.name} is ending soon`,
                     text: `The event ${event.name} is scheduled to end on ${DateForNotification(eventEnd)}.`
                 })
             }).then(response => response.json())
@@ -233,6 +238,34 @@ document.getElementById("save_notification_settings").addEventListener("click", 
         }
     });
 });
+
+document.getElementById('clear_notification_settings').addEventListener('click', () => {
+
+    // Send cancel request to backend
+    fetch('https://back-end-ocean.up.railway.app/notifications/cancel', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast("Tất cả thông báo đã được hủy");
+        } else {
+            showToast("Lỗi khi hủy thông báo");
+        }
+    })
+    .catch(error => {
+        console.error('Error cancelling notifications:', error);
+        showToast("Lỗi khi hủy thông báo");
+    });
+
+    showNotification = false;
+
+});
+
 
 // Gắn sự kiện cho nút Filter
 document.addEventListener("DOMContentLoaded", async() => {
@@ -258,6 +291,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     document.getElementById("notify_time").value = localStorage.getItem("notify_time") || "08:00";
 
     // Schedule notifications
+    if(showNotification) {
     setInterval(scheduleNotifications, 60000); // 1 phút
-
+    }
 });

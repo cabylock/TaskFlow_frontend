@@ -203,4 +203,22 @@
  #save_notification_settings:hover {
    background-color: #45a049;
  }
+
+
+ #clear_notification_settings {
+   margin-top:20px;
+   background-color: #4CAF50;
+   color: white;
+   padding: 10px 15px;
+   border: none;
+   border-radius: 5px;
+   font-size: 14px;
+   cursor: pointer;
+   width: 100%;
+   transition: background-color 0.3s;
+ }
+ 
+ #clear_notification_settings:hover {
+   background-color: #45a049;
+ }
  
