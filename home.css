@@ -18,11 +18,15 @@ body.light_mode {
   background-color: white;
   color: black;
 }
-body.dark_mode {
+body.dark_mode  {
   background-color: black;
   color: white;
 }
 
+body.dark_mode p  {
+  
+  color: black;
+}
 
 body.dark_mode #profile_main label {
   color: white;
