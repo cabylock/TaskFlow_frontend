@@ -169,12 +169,13 @@
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-  width: 120px;
+  width: 150px;
 }
 
 .project-dates label {
   margin-right: -5px;
   font-size: 14px;
+  
 }
 
 .delete-button {
