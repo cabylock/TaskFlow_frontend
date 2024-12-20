@@ -150,6 +150,18 @@ body.dark_mode #profile_main label {
    transition: 0.2s ease;
 }
 
+#faq_button {
+  
+  width: 40px;
+  height: 40px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #add0f8;
+}
+
 /* design for main_contet  */
 .main-content {
   

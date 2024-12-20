@@ -9,6 +9,7 @@ const buttonIds = [
     'flashcard',
     'quiz',
     'gpa',
+    'faq',
 
 ];
 

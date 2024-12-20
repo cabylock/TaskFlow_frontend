@@ -199,7 +199,8 @@ document.getElementById("save_notification_settings").addEventListener("click", 
  
          const now = new Date();
          console.log(notifyTime, now);
- 
+        
+        
 
         if (notificationTimeStart > now) {
             fetch('https://back-end-ocean.up.railway.app/email/schedule', {
@@ -217,6 +218,37 @@ document.getElementById("save_notification_settings").addEventListener("click", 
             }).then(response => response.json())
               .then(data => console.log(data.message))
               .catch(error => console.error('Error:', error));
+
+
+              document.getElementById('clear_notification_settings').addEventListener('click', () => {
+
+                // Send cancel request to backend
+                fetch('https://back-end-ocean.up.railway.app/email/cancel', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        
+                        to: localStorage.getItem('email'),
+                        
+
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    showToast(data.message);
+                })
+                .catch(error => {
+                    console.error('Error cancelling notifications:', error);
+                    showToast("Lỗi khi hủy thông báo");
+                });
+            
+                showNotification = false;
+            
+                    });
+
+
         }
 
         if (notificationTimeEnd > now) {
@@ -242,20 +274,19 @@ document.getElementById("save_notification_settings").addEventListener("click", 
 document.getElementById('clear_notification_settings').addEventListener('click', () => {
 
     // Send cancel request to backend
-    fetch('https://back-end-ocean.up.railway.app/notifications/cancel', {
+    fetch('https://back-end-ocean.up.railway.app/email/cancel', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+            
+            to: localStorage.getItem('email'),
+        }),
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            showToast("Tất cả thông báo đã được hủy");
-        } else {
-            showToast("Lỗi khi hủy thông báo");
-        }
+        showToast(data.message);
     })
     .catch(error => {
         console.error('Error cancelling notifications:', error);

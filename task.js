@@ -1,8 +1,5 @@
 let Tasks =  [];
-let number_running =0 ;
-let number_ended = 0;
-let number_coming = 0;
-let number_total = 0;
+
 
 // Lấy các phần tử HTML
 const taskMain = document.getElementById('task_main');
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async() => {
   await getProjectsFromDatabase() // Lấy dữ liệu từ database
   
   renderProjectList(); // Hiển thị danh sách dự án
-  renderOverviewStatistics(); // Hiển thị thống kê
+ 
   
   // Lắng nghe sự kiện click nút Add Project
   addProjectButton.addEventListener('click', addProject);
@@ -84,20 +81,8 @@ document.addEventListener('DOMContentLoaded', async() => {
       const projectEndDate = new Date(project.endDate);
       let showProject = true;
       
-      number_total++;
-      if(project.level === 'high')
-        {
-          number_running++;
-        }
-        else if(project.level === 'medium')
-        {
-          number_ended++;
-        }
-        else if(project.level === 'low')
-        {
-          number_comming++;
-        }
-
+      
+      
       if( progressValue === 'Running' && (currentDate < projectStartDate || currentDate > projectEndDate)) {
         showProject = false;
       } 
