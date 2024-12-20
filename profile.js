@@ -19,7 +19,7 @@ document.getElementById('profileInput').addEventListener('change', function(even
             .then(response => response.json())
             .then(result => {
                 if (result) {
-                    document.getElementById('profileImage').src = `${result.url}`;
+                    document.getElementsByClassName('profileImage').src = `${result.url}`;
                 } else {
                     alert('Error uploading profile image');
                 }
@@ -35,7 +35,7 @@ document.getElementById('profileForm').addEventListener('submit', function(event
     
     const name = document.getElementById('new_name').value;
     const password = document.getElementById('new_password').value;
-    const profileImage = document.getElementById('profileImage').src;
+    const profileImage = document.getElementsByClassName('profileImage').src;
     const description = document.getElementById('description').value;
 
     if(name === '')

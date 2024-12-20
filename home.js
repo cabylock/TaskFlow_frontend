@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('description').value = result.description;
             }
             if (result.profile_image) {
-                document.getElementById('profileImage').src = `${result.profile_image}`;
+                document.getElementsByClassName('profileImage').src = `${result.profile_image}`;
             }
             else {
-                document.getElementById('profileImage').src = 'assests/bg.jpg'
+                document.getElementsByClassName('profileImage').src = 'assests/bg.jpg'
             }
 
         })

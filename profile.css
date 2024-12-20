@@ -40,7 +40,7 @@
    border-radius: 5px; /* Bo tròn các góc */
  }
  
- #profileImage {
+ .profileImage {
    width: 150px; /* Kích thước hình tròn */
    height: 150px; /* Kích thước hình tròn */
    border-radius: 50%; /* Tạo hình tròn */
