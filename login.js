@@ -6,14 +6,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerSection = document.getElementById('registerSection');
     const loginSection = document.getElementById('loginSection');
 
+
+    document.getElementById('home').addEventListener('click', function() {
+
+        document.getElementById('homeSection').style.display = 'block';
+        document.getElementsByClassName('container')[0].style.display = 'none';
+        document.getElementById('aboutSection').style.display = 'none';
+        document.getElementById('contactSection').style.display = 'none';
+
+    });
+
+    document.getElementById('about').addEventListener('click', function() { 
+        document.getElementById('homeSection').style.display = 'none';
+        document.getElementById('aboutSection').style.display = 'block';
+        document.getElementsByClassName('container')[0].style.display = 'none';
+        document.getElementById('contactSection').style.display = 'none';
+    });
+
+    document.getElementById('contact').addEventListener('click', function() {
+        document.getElementById('homeSection').style.display = 'none';
+        document.getElementById('aboutSection').style.display = 'none';
+        document.getElementsByClassName('container')[0].style.display = 'none';
+        document.getElementById('contactSection').style.display = 'block';
+    });
+
+
     showRegisterButton.addEventListener('click', function() {
         registerSection.style.display = 'block';
+        document.getElementsByClassName('container')[0].style.display = 'block';
+        document.getElementById('homeSection').style.display = 'none';
         loginSection.style.display = 'none';
+        document.getElementById('aboutSection').style.display = 'none';
+        document.getElementById('contactSection').style.display = 'none';
+
     });
 
     showLoginButton.addEventListener('click', function() {
         registerSection.style.display = 'none';
+        document.getElementById('homeSection').style.display = 'none';
         loginSection.style.display = 'block';
+        document.getElementsByClassName('container')[0].style.display = 'block';
+        document.getElementById('aboutSection').style.display = 'none';
+        document.getElementById('contactSection').style.display = 'none';
     });
 
     document.getElementById('registerForm').addEventListener('submit', async function(event) {

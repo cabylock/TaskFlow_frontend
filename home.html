@@ -10,7 +10,8 @@
   <!-- Linking Google Font Link For Icons -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="home.css" />
+  
+    <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="profile.css" />
   <link rel="stylesheet" href="video.css" />
   <link rel="stylesheet" href="dashboard.css" />
@@ -131,47 +132,47 @@
     </div>
 
 
+    <!-- snowflake -->
+    <div id="showsnow">
 
-    <style>
-      #snowflakeContainer {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-      }
+      <style>
+        /* Đảm bảo bông tuyết luôn màu sáng dù trong chế độ tối hay sáng */
+        .snowflake {
+          padding-left: 15px;
+          font-size: 30px;
+          /* Bạn có thể điều chỉnh kích thước theo nhu cầu */
+          position: fixed;
+          color: rgb(218, 209, 209) !important;
+          /* Đảm bảo màu trắng cho bông tuyết */
+          user-select: none;
+          z-index: 1000;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
 
-      .snowflake {
-        padding-left: 15px;
-        font-size: 14px;
-        line-height: 24px;
-        position: fixed;
-        color: #ebebeb;
-        user-select: none;
-        z-index: 1000;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-      }
+        .snowflake:hover {
+          cursor: default;
+        }
 
-      .snowflake:hover {
-        cursor: default
-      }
-
-      .snowflake {
-        color: white !important;
-        font-size: 30px;
-        /* Bạn có thể điều chỉnh kích thước theo nhu cầu */
-      }
-    </style>
-    <div id='snowflakeContainer'>
-      <p class='snowflake'>❄</p>
+        #snowflakeContainer {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+        }
+      </style>
+      <div id='snowflakeContainer'>
+        <p class='snowflake'>❄</p>
+      </div>
+      <script type='text/javascript'>
+        //<![CDATA[
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+        //]]>
+      </script>
     </div>
-    <script type='text/javascript'>
-      //<![CDATA[
-      var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
-      //]]>
-    </script>
+
 
     <!-- dashboard -->
     <div id="dashboard_main" style="display: none;">
@@ -284,426 +285,449 @@
         </div>
 
 
-        <div>
-        <div class="charts">
-          <canvas id="endedDailyChart"></canvas>
-        </div>
+        <div class="bieudo">
+          <div class="charts">
+            <canvas id="endedDailyChart"></canvas>
+          </div>
 
-        <div class="charts">
-          <canvas id="endedMonthlyChart"></canvas>
-        </div>
-
-        <div class="charts2">
-          <canvas id="statusPieChart"></canvas>
-        </div>
+          <div class="charts">
+            <canvas id="endedMonthlyChart"></canvas>
+          </div>
 
         </div>
-
       </div>
 
     </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- tasks -->
-  <div id="task_main" style="display: none;">
-    <div>Task Manager</div>
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- tasks -->
+    <div id="task_main" style="display: none;">
+      <div>Task Manager</div>
 
 
-    <div class="task_container">
-
-      <div class="input_task">
-        <input type="text" id="project_name" placeholder="Enter project name">
-        <button id="add_project_button">Add Project</button>
-      </div>
 
 
-      <div class="filter">
-        <label for="progress_filter">Progress:</label>
-        <select id="progress_filter" class="progress">
-          <option value="all">All</option>
-          <option value="Running">RUNNING</option>
-          <option value="Ended">ENDED</option>
-          <option value="Comming">COMMING</option>
-        </select>
-        <label for="level_filter">Priority:</label>
-        <select id="level_filter" class="level">
-          <option value="all">ALL</option>
-          <option value="high" style="color: red;">HIGH</option>
-          <option value="medium" style="color: orange;">MEDIUM</option>
-          <option value="low" style="color: green;">LOW</option>
-        </select>
-      </div>
-    </div>
 
-    <!-- Project List -->
-    <div class="project_list"> </div>
+      <div class="task_container">
 
-  </div>
-
-  <!-- notifications -->
-  <div id="notification_main" style="display: flex; ">
-    <div class="left_notification">
+        <div class="input_task">
+          <input type="text" id="project_name" placeholder="Enter project name">
+          <button id="add_project_button">Add Project</button>
+        </div>
 
 
-      <div id="notification_box">
-        <!-- Bộ lọc ngày và thời gian -->
-        <div class="input_notification">
-          <input type="date" id="date" name="date">
-          <select id="time" name="time">
-            <option value="week">Week</option>
-            <option value="month">Month</option>
-            <option value="year">Year</option>
-            <option value="all_time">All Time</option>
+        <div class="filter">
+          <label for="progress_filter">Progress:</label>
+          <select id="progress_filter" class="progress">
+            <option value="all">All</option>
+            <option value="Running">RUNNING</option>
+            <option value="Ended">ENDED</option>
+            <option value="Comming">COMMING</option>
           </select>
-          <button id="filter_button">Filter</button>
-
+          <label for="level_filter">Priority:</label>
+          <select id="level_filter" class="level">
+            <option value="all">ALL</option>
+            <option value="high" style="color: red;">HIGH</option>
+            <option value="medium" style="color: orange;">MEDIUM</option>
+            <option value="low" style="color: green;">LOW</option>
+          </select>
         </div>
-
       </div>
 
-      <!-- Container thông báo -->
-      <div class="notification_container">
-        <div class="notification_list"></div>
-      </div>
-    </div>
-
-    <div id="notification_done_box" class="notification-box">
-      <h3>Mark Done Notifications</h3>
-      <!-- Container thông báo đã hoàn thành -->
-
-      <div class="notification_done_list"></div>
-
-
+      <!-- Project List -->
+      <div class="project_list"> </div>
 
     </div>
 
-    <div class="notification_config">
-      <h3>Notification Settings</h3>
-
-      <div class="config_item">
-        <label for="notify_days">In advance:</label>
-        <select id="notify_days">
-          <option value="1">1 day</option>
-          <option value="2">2 days</option>
-          <option value="5">5 days</option>
-        </select>
-      </div>
-
-      <div class="config_item">
-        <label for="notify_time">Notification Time:</label>
-        <input type="time" id="notify_time" value="08:00">
-      </div>
-
-      <button id="save_notification_settings">Save settings</button>
-      <button id="clear_notification_settings">Delete settings</button>
-    </div>
+    <!-- notifications -->
+    <div id="notification_main" style="display: flex; ">
+      <div class="left_notification">
 
 
-  </div>
+        <div id="notification_box">
+          <!-- Bộ lọc ngày và thời gian -->
+          <div class="input_notification">
+            <input type="date" id="date" name="date">
+            <select id="time" name="time">
+              <option value="week">Week</option>
+              <option value="month">Month</option>
+              <option value="year">Year</option>
+              <option value="all_time">All Time</option>
+            </select>
+            <button id="filter_button">Filter</button>
 
-
-
-
-  <!-- extension -->
-  <!-- flashcard -->
-  <div id="flashcard_main" style="display: none;">
-
-    <div id="flashcard_box">
-      <!-- Tiêu đề chính -->
-      <h4>Flashcard</h4>
-
-
-      <!-- Phần Flashcard -->
-      <div class="flashcard-container">
-        <div class="flashcard" id="flashcard">
-          <div class="front">
-            <p id="card-number"></p>
-            <h2 id="front-text">Hello</h2>
           </div>
-          <div class="back">
-            <p id="card-number-back"></p>
-            <h2 id="back-text">Xin chào</h2>
+
+        </div>
+
+        <!-- Container thông báo -->
+        <div class="notification_container">
+          <div class="notification_list"></div>
+        </div>
+      </div>
+
+      <div id="notification_done_box" class="notification-box">
+        <h3>Mark Done Notifications</h3>
+        <!-- Container thông báo đã hoàn thành -->
+
+        <div class="notification_done_list"></div>
+
+
+
+      </div>
+
+      <div class="notification_config">
+        <h3>Notification Settings</h3>
+
+        <div class="config_item">
+          <label for="notify_days">In advance:</label>
+          <select id="notify_days">
+            <option value="1">1 day</option>
+            <option value="2">2 days</option>
+            <option value="5">5 days</option>
+          </select>
+        </div>
+
+        <div class="config_item">
+          <label for="notify_time">Notification Time:</label>
+          <input type="time" id="notify_time" value="08:00">
+        </div>
+
+        <button id="save_notification_settings">Save settings</button>
+        <button id="clear_notification_settings">Delete settings</button>
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- extension -->
+    <!-- flashcard -->
+    <div id="flashcard_main" style="display: none;">
+
+      <div id="flashcard_box">
+        <!-- Tiêu đề chính -->
+        <h4>Flashcard</h4>
+
+
+        <!-- Phần Flashcard -->
+        <div class="flashcard-container">
+          <div class="flashcard" id="flashcard">
+            <div class="front">
+              <p id="card-number"></p>
+              <h2 id="front-text">Hello</h2>
+            </div>
+            <div class="back">
+              <p id="card-number-back"></p>
+              <h2 id="back-text">Xin chào</h2>
+            </div>
+          </div>
+          <div class="flashcard-buttons">
+            <button id="flip-button">Answer</button>
+            <button id="next-button">Next</button>
+            <button id="previous-button">Previous</button>
+            <button id="add-button">Add new one</button>
+            <button id="delete-button">Delete</button>
           </div>
         </div>
-        <div class="flashcard-buttons">
-          <button id="flip-button">Answer</button>
-          <button id="next-button">Next</button>
-          <button id="previous-button">Previous</button>
-          <button id="add-button">Add new one</button>
-          <button id="delete-button">Delete</button>
+
+        <!-- Form thêm từ vựng -->
+        <div class="add-form" id="add-form">
+          <h2>Add new one</h2>
+          <input type="text" id="front-input" placeholder="Front Face">
+          <input type="text" id="back-input" placeholder="Back Face">
+          <div class="form-buttons">
+            <button id="save-button">Save</button>
+            <button id="cancel-button">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- quiz -->
+    <div id="quiz_main" style="display: none;">
+      <!-- Phần Quiz -->
+      <div class="quiz-display">
+        <h1 id="question-text">Questions</h1>
+        <div class="answers">
+          <button id="answer-A-button">A</button>
+          <button id="answer-B-button">B</button>
+          <button id="answer-C-button">C</button>
+          <button id="answer-D-button">D</button>
+        </div>
+        <p id="result-text"></p>
+        <div class="quiz-buttons">
+          <button id="prev-question-button">Previous question</button>
+          <button id="next-question-button">Next question</button>
+          <button id="delete-question-button">Delete question</button>
         </div>
       </div>
 
-      <!-- Form thêm từ vựng -->
-      <div class="add-form" id="add-form">
-        <h2>Add new one</h2>
-        <input type="text" id="front-input" placeholder="Front Face">
-        <input type="text" id="back-input" placeholder="Back Face">
-        <div class="form-buttons">
-          <button id="save-button">Save</button>
-          <button id="cancel-button">Cancel</button>
-        </div>
-      </div>
+      <!-- Form thêm câu hỏi -->
+      <div id="quiz_box">
+        <div class="quiz-form">
 
-    </div>
-
-  </div>
-
-  <!-- quiz -->
-  <div id="quiz_main" style="display: none;">
-    <!-- Phần Quiz -->
-    <div class="quiz-display">
-      <h1 id="question-text">Questions</h1>
-      <div class="answers">
-        <button id="answer-A-button">A</button>
-        <button id="answer-B-button">B</button>
-        <button id="answer-C-button">C</button>
-        <button id="answer-D-button">D</button>
-      </div>
-      <p id="result-text"></p>
-      <div class="quiz-buttons">
-        <button id="prev-question-button">Previous question</button>
-        <button id="next-question-button">Next question</button>
-        <button id="delete-question-button">Delete question</button>
-      </div>
-    </div>
-
-    <!-- Form thêm câu hỏi -->
-    <div id="quiz_box">
-      <div class="quiz-form">
-
-        <h2>Add more questions</h2>
-        <input type="text" id="question-input" placeholder="Enter new question">
-        <input type="text" id="answer-A-input" placeholder="Answer A">
-        <input type="text" id="answer-B-input" placeholder="Answer B">
-        <input type="text" id="answer-C-input" placeholder="Answer C">
-        <input type="text" id="answer-D-input" placeholder="Answer D">
-        <select id="correct-answer-input">
-          <option value="">Choose right answer</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-        </select>
-        <button id="save-question-button">Save Question</button>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- GPA -->
-  <div id="gpa_main" style="display: none;">
-
-    <div class="container">
-      <h1>Gpa caculator</h1>
-      <form id="gradeForm">
-        <div class="form-row">
-          <input type="text" id="subjectName" placeholder="Subject Name" required>
-          <input type="number" id="credit" placeholder="credit" min="1" required>
-          <input type="number" id="componentScore" placeholder="Component Grade (10%)" min="0" max="10" step="0.1"
-            required>
-          <input type="number" id="midtermScore" placeholder="Midterm Grade (30%)" min="0" max="10" step="0.1" required>
-          <input type="number" id="finalScore" placeholder="Final Grade (60%)" min="0" max="10" step="0.1" required>
-        </div>
-        <button type="button" class="button-container" id="addSubject">Thêm vào danh sách</button>
-      </form>
-      <button id="resetTable">Reset Table</button>
-      <h2>Subjects List</h2>
-      <div class="button-container">
-      </div>
-      <table id="subjectTable">
-        <thead>
-          <tr>
-            <th>Subject Name</th>
-            <th>Credit</th>
-            <th>GPA out of 10</th>
-            <th>Letter Grade</th>
-            <th>GPA out of 4</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <div class="results">
-        <h2 id="gpaResult">GPA: </h2>
-        <h3 id="improveCourses">Retake course: 0</h3>
-        <ul id="improveList"></ul>
-        <h3 id="retakeCourses">Repeat course: 0</h3>
-        <ul id="retakeList"></ul>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- video -->
-  <div id="video_main" style="display: none;">
-
-    <div class="playlist_box">
-      <div class="input_playlist">
-        <button id="add_playlist_button">Add Playlist</button>
-        <input type="text" id="playlist_name" placeholder="Enter playlist name">
-
-      </div>
-
-      <div class="playlist_container"></div>
-
-    </div>
-
-    <div id="chart">
-
-    </div>
-  </div>
-
-
-
-
-  <!-- profile -->
-  <div id="profile_main" style="display: none;">
-
-    <div class="profile-container">
-      <form id="profileForm">
-
-        <div class="profile-image-container">
-          <img class="profileImage"
-            src="data:image/jpeg;base64,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">
-          <input type="file" id="profileInput" accept="image/*">
-          <button id="uploadButton"><span class="material-symbols-outlined"> photo_camera </span></button>
-          <!-- Nút nhấn nhỏ -->
+          <h2>Add more questions</h2>
+          <input type="text" id="question-input" placeholder="Enter new question">
+          <input type="text" id="answer-A-input" placeholder="Answer A">
+          <input type="text" id="answer-B-input" placeholder="Answer B">
+          <input type="text" id="answer-C-input" placeholder="Answer C">
+          <input type="text" id="answer-D-input" placeholder="Answer D">
+          <select id="correct-answer-input">
+            <option value="">Choose right answer</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+          <button id="save-question-button">Save Question</button>
         </div>
 
-        <h1 id="name"></h1>
-
-
-        <label for="name">New Name:</label>
-
-
-        <input type="text" id="new_name" name="new_name">
-
-        <label for="password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" minlength="6">
-
-        <!-- submit button  -->
-        <div>
-
-          <button type="submit" id="submit_button">Change profile</button>
-        </div>
-
-      </form>
-
-      <!-- background change -->
-      <div>
-        <label for="backgroundSelect">Background:</label>
-        <select id="backgroundSelect">
-          <option value="light_mode">Light</option>
-          <option value="dark_mode">Dark</option>
-        </select>
       </div>
 
-      <!-- code background change -->
-      <script>
-        // Function to set the background mode
-        function setBackgroundMode(mode) {
+    </div>
 
-          var body = document.getElementById('body');
-          if (body) {
-            body.className = mode;
-            document.getElementById('backgroundSelect').value = mode;
+    <!-- GPA -->
+    <div id="gpa_main" style="display: none;">
+
+      <div class="container">
+        <h1>Gpa caculator</h1>
+        <form id="gradeForm">
+          <div class="form-row">
+            <input type="text" id="subjectName" placeholder="Subject Name" required>
+            <input type="number" id="credit" placeholder="credit" min="1" required>
+            <input type="number" id="componentScore" placeholder="Component Grade (10%)" min="0" max="10" step="0.1"
+              required>
+            <input type="number" id="midtermScore" placeholder="Midterm Grade (30%)" min="0" max="10" step="0.1"
+              required>
+            <input type="number" id="finalScore" placeholder="Final Grade (60%)" min="0" max="10" step="0.1" required>
+          </div>
+          <button type="button" class="button-container" id="addSubject">Thêm vào danh sách</button>
+        </form>
+        <button id="resetTable">Reset Table</button>
+        <h2>Subjects List</h2>
+        <div class="button-container">
+        </div>
+        <table id="subjectTable">
+          <thead>
+            <tr>
+              <th>Subject Name</th>
+              <th>Credit</th>
+              <th>GPA out of 10</th>
+              <th>Letter Grade</th>
+              <th>GPA out of 4</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="results">
+          <h2 id="gpaResult">GPA: </h2>
+          <h3 id="improveCourses">Retake course: 0</h3>
+          <ul id="improveList"></ul>
+          <h3 id="retakeCourses">Repeat course: 0</h3>
+          <ul id="retakeList"></ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- video -->
+    <div id="video_main" style="display: none;">
+
+      <div class="playlist_box">
+        <div class="input_playlist">
+          <button id="add_playlist_button">Add Playlist</button>
+          <input type="text" id="playlist_name" placeholder="Enter playlist name">
+
+        </div>
+
+        <div class="playlist_container"></div>
+
+      </div>
+
+      <div id="chart">
+
+      </div>
+    </div>
+
+
+
+
+    <!-- profile -->
+    <div id="profile_main" style="display: none;">
+
+      <div class="profile-container">
+        <form id="profileForm">
+
+          <div class="profile-image-container">
+            <img class="profileImage"
+              src="data:image/jpeg;base64,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">
+            <input type="file" id="profileInput" accept="image/*">
+            <button id="uploadButton"><span class="material-symbols-outlined"> photo_camera </span></button>
+            <!-- Nút nhấn nhỏ -->
+          </div>
+
+          <h1 id="name"></h1>
+
+
+          <label for="name">New Name:</label>
+
+
+          <input type="text" id="new_name" name="new_name">
+
+          <label for="password">New Password:</label>
+          <input type="password" id="new_password" name="new_password" minlength="6">
+
+          <!-- submit button  -->
+          <div>
+
+            <button type="submit" id="submit_button">Change profile</button>
+          </div>
+
+        </form>
+
+        <!-- background change -->
+        <div style="display: flex; gap:50px">
+          <select id="backgroundSelect">
+            <label for="backgroundSelect">Background:</label>
+            <option value="light_mode">Light</option>
+            <option value="dark_mode">Dark</option>
+          </select>
+
+          <div class="switch-container">
+            <input type="checkbox" id="toggle" class="switch-input">
+            <label for="toggle" class="switch-label"></label>
+            <div class="switch-text">
+              <span class="off-text">Animation Off</span>
+              <span class="on-text">Animation On</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- code background change -->
+        <script>
+          // Function to set the background mode
+          function setBackgroundMode(mode) {
+
+            var body = document.getElementById('body');
+            if (body) {
+              body.className = mode;
+              document.getElementById('backgroundSelect').value = mode;
+            }
           }
-        }
 
-        // Load the saved background mode from local storage
-        document.addEventListener('DOMContentLoaded', function () {
-          var savedMode = localStorage.getItem('backgroundMode') || 'light_mode';
-          setBackgroundMode(savedMode);
-        });
+          // Load the saved background mode from local storage
+          document.addEventListener('DOMContentLoaded', function () {
+            var savedMode = localStorage.getItem('backgroundMode') || 'light_mode';
+            setBackgroundMode(savedMode);
+          });
 
-        // Save the selected background mode to local storage
-        document.getElementById('backgroundSelect').addEventListener('change', function () {
-          var selectedMode = this.value;
-          localStorage.setItem('backgroundMode', selectedMode);
-          setBackgroundMode(selectedMode);
-        });
-      </script>
+          // Save the selected background mode to local storage
+          document.getElementById('backgroundSelect').addEventListener('change', function () {
+            var selectedMode = this.value;
+            localStorage.setItem('backgroundMode', selectedMode);
+            setBackgroundMode(selectedMode);
+          });
+        </script>
+        <!-- on off animation  -->
+         <script>
+          document.getElementById('toggle').addEventListener('change', function () {
+            if (this.checked) {
+              document.getElementById('showsnow').style.display = 'block';
+            } 
+            else {
+              document.getElementById('showsnow').style.display = 'none';
+            }
+          });
+         </script>
+
+
+
+      </div>
+
+      <!-- description -->
+      <div class="description_container">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50"
+          placeholder="Enter description here"></textarea>
+
+
+
+      </div>
 
     </div>
 
-    <!-- description -->
-    <div class="description_container">
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" rows="4" cols="50" placeholder="Enter description here"></textarea>
+    <!-- faq -->
+    <div id="faq_main" style="display: none;">
+      <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
 
+        <div class="faq-question">
+          <h2>What is TaskFlow?</h2>
+          <p>TaskFlow is a web application that helps you manage your tasks, track your progress, and improve your
+            productivity.</p>
+        </div>
 
+        <div class="faq-question">
+          <h2>How do I distinguish level of task</h2>
+          <p>
+            In the Tasks or Notifications, you can see the level of task by the color of the task:
+          <ul>
+            <li><strong style="color: red;">Red:</strong> High priority</li>
+            <li><strong style="color: orange;">Orange:</strong> Medium priority</li>
+            <li><strong style="color: green;">Green:</strong> Low priority</li>
+          </ul>
+          </p>
+        </div>
 
+        <div class="faq-question">
+          <h2>How do I search for an event quickly?</h2>
+          <p>Look at the calendar. You will see some days marked with events. Click on a marked day to see the event
+            details.</p>
+          <ul>
+            <li><strong style="color: green;">Green:</strong> Event is running</li>
+            <li><strong style="color: orange;">Orange:</strong> Event is ending</li>
+            <li><strong style="color: red;">Red:</strong> Both of them</li>
+          </ul>
+        </div>
+
+        <div class="faq-question">
+          <h2>How do I change my profile picture?</h2>
+          <p>To change your profile picture, click on the "Profile" button in the sidebar, then click on the "Upload
+            Photo" button. Select a new profile picture from your computer and click on the "Save" button to update your
+            profile picture.</p>
+        </div>
+
+        <div class="faq-question">
+          <h2>How do I change my password?</h2>
+          <p>To change your password, click on the "Profile" button in the sidebar, then enter your new password in the
+            "New Password" field. Click on the "Save" button to update your password.</p>
+        </div>
+
+        <div class="faq-question">
+          <h2>How do I change the background color?</h2>
+          <p>To change the background color, click on the "Profile" button in the sidebar, then select a new background
+            color from the "Background" dropdown menu. Click on the "Save" button to update the background color.</p>
+        </div>
+
+        <!-- Move feedback button here -->
+        <button class="feedback-button"
+          onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdF51aLO52lAAoM5_-B25dzXZ3gDHfCG2iZcxrqumjirRFsuA/viewform?usp=sharing', '_blank')">
+          Give Us Feedback
+        </button>
+      </div>
     </div>
-
-  </div>
-
-  <!-- faq -->
-  <div id="faq_main" style="display: none;">
-    <div class="faq-container">
-      <h1>Frequently Asked Questions</h1>
-
-      <div class="faq-question">
-        <h2>What is TaskFlow?</h2>
-        <p>TaskFlow is a web application that helps you manage your tasks, track your progress, and improve your
-          productivity.</p>
-      </div>
-
-      <div class="faq-question">
-        <h2>How do I distinguish level of task</h2>
-        <p>
-          In the Tasks or Notifications, you can see the level of task by the color of the task:
-        <ul>
-          <li><strong style="color: red;">Red:</strong> High priority</li>
-          <li><strong style="color: orange;">Orange:</strong> Medium priority</li>
-          <li><strong style="color: green;">Green:</strong> Low priority</li>
-        </ul>
-        </p>
-      </div>
-
-      <div class="faq-question">
-        <h2>How do I search for an event quickly?</h2>
-        <p>Look at the calendar. You will see some days marked with events. Click on a marked day to see the event
-          details.</p>
-        <ul>
-          <li><strong style="color: green;">Green:</strong> Event is running</li>
-          <li><strong style="color: orange;">Orange:</strong> Event is ending</li>
-          <li><strong style="color: red;">Red:</strong> Both of them</li>
-        </ul>
-      </div>
-
-      <div class="faq-question">
-        <h2>How do I change my profile picture?</h2>
-        <p>To change your profile picture, click on the "Profile" button in the sidebar, then click on the "Upload
-          Photo" button. Select a new profile picture from your computer and click on the "Save" button to update your
-          profile picture.</p>
-      </div>
-
-      <div class="faq-question">
-        <h2>How do I change my password?</h2>
-        <p>To change your password, click on the "Profile" button in the sidebar, then enter your new password in the
-          "New Password" field. Click on the "Save" button to update your password.</p>
-      </div>
-
-      <div class="faq-question">
-        <h2>How do I change the background color?</h2>
-        <p>To change the background color, click on the "Profile" button in the sidebar, then select a new background
-          color from the "Background" dropdown menu. Click on the "Save" button to update the background color.</p>
-      </div>
-
-      <!-- Move feedback button here -->
-      <button class="feedback-button"
-        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdF51aLO52lAAoM5_-B25dzXZ3gDHfCG2iZcxrqumjirRFsuA/viewform?usp=sharing', '_blank')">
-        Give Us Feedback
-      </button>
-    </div>
-  </div>
 
 
 

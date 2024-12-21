@@ -5,114 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Register</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <meta name="google-signin-client_id" content="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden; /* Đảm bảo không có thanh cuộn */
-        }
-
-        .video-background {
-            position: fixed; /* Đặt video cố định trong nền */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Đảm bảo video phủ hết màn hình */
-            z-index: -1; /* Đặt video dưới tất cả các phần tử khác */
-        }
-
-        .container {
-            position: relative; /* Để các phần tử bên trong được đặt trên video */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.8); /* Màu nền trắng nhẹ để dễ đọc nội dung */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            z-index: 1; /* Đảm bảo form ở trên video */
-        }
-
-        .form-toggle {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .form-toggle button {
-            width: 48%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .form-toggle button:hover {
-            background-color: #0056b3;
-        }
-
-        .form-section {
-            width: 100%;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    
 </head>
 <body>
-    <video class="video-background" autoplay muted loop>
-        <source src="https://cdn.pixabay.com/video/2015/10/30/1222-144176067_large.mp4" type="video/mp4">
-    </video>
-
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-    <div class="container">
-        <div class="form-toggle">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="nav-left">
+            <button id="home" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;">Home</button>
+            <button id="about" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;" >About Us</button>
+            <button id="contact" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;" >Contact Us</button>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="right">
             <button id="showRegister">Register</button>
             <button id="showLogin">Login</button>
         </div>
+    </div>
 
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <div id="homeSection" class="section" >
+        <h2>Welcome to TaskFlow</h2>
+        
+        <p>TaskFlow is a task management application that helps you stay organized and productive. Sign up now to start managing your tasks!</p>
+        
+        
+    </div>
+
+    <div id="aboutSection" class="section" style="display: none;">
+        <h2>About Us</h2>
+        <p>We are a team of passionate developers dedicated to making task management easier and more efficient. Our mission is to help you stay organized and productive.</p>
+    </div>
+    
+    <div id="contactSection" class="section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Have any questions or feedback? We'd love to hear from you! Reach out to us at:</p>
+        <ul>
+            <li>Email: support@taskflow.com</li>
+            <li>Phone: +1 234 567 890</li>
+            <li>Address: 123 TaskFlow St., Productivity City, 12345</li>
+        </ul>
+
+    </div>
+
+    <div class="container" style="display: none;">
+        
+
+
+
+        
         <div id="registerSection" class="form-section">
             <h2>Register</h2>
             <form id="registerForm">
