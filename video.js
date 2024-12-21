@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         .then(response => response.json())
         .then(data => {
 
-            playlists = data.content.playlists;
+            playlists = data.content.playlists || [];
 
             renderPlaylists();
         });

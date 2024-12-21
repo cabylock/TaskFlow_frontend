@@ -605,7 +605,7 @@
           </select>
 
           <div class="switch-container">
-            <input type="checkbox" id="toggle" class="switch-input" checked>
+            <input type="checkbox" id="toggle" class="switch-input" >
             <label for="toggle" class="switch-label"></label>
             <div class="switch-text">
               <span class="on-text">Animation On</span>
@@ -645,11 +645,26 @@
           document.getElementById('toggle').addEventListener('change', function () {
             if (this.checked) {
               document.getElementById('showsnow').style.display = 'block';
+              localStorage.setItem('animationMode', 'on');
             } 
             else {
               document.getElementById('showsnow').style.display = 'none';
+              localStorage.setItem('animationMode', 'off');
             }
           });
+
+          document.addEventListener('DOMContentLoaded', function () {
+            var savedMode = localStorage.getItem('animationMode') || 'on';
+            if (savedMode === 'on') {
+              document.getElementById('toggle').checked = true;
+              document.getElementById('showsnow').style.display = 'block';
+            } 
+            else {
+              document.getElementById('toggle').checked = false;
+              document.getElementById('showsnow').style.display = 'none';
+            }
+          });
+
          </script>
 
 
@@ -680,7 +695,7 @@
         </div>
 
         <div class="faq-question">
-          <h2>How do I distinguish level of task</h2>
+          <h2>How do I distinguish level of task?</h2>
           <p>
             In the Tasks or Notifications, you can see the level of task by the color of the task:
           <ul>
@@ -710,23 +725,22 @@
         </div>
 
         <div class="faq-question">
-          <h2>How do I change my password?</h2>
-          <p>To change your password, click on the "Profile" button in the sidebar, then enter your new password in the
-            "New Password" field. Click on the "Save" button to update your password.</p>
+          <h2>How do I turn off animation?</h2>
+          <p>To turn off animation, click on the "Profile" button in the sidebar, then you will see a switch. Click to this switch to turn off animation.</p>
         </div>
 
         <div class="faq-question">
-          <h2>How do I change the background color?</h2>
+          <h2>How do I change the background mode?</h2>
           <p>To change the background color, click on the "Profile" button in the sidebar, then select a new background
             color from the "Background" dropdown menu. Click on the "Save" button to update the background color.</p>
         </div>
 
         <!-- Move feedback button here -->
-        <button class="feedback-button"
-          onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdF51aLO52lAAoM5_-B25dzXZ3gDHfCG2iZcxrqumjirRFsuA/viewform?usp=sharing', '_blank')">
-          Give Us Feedback
-        </button>
       </div>
+      <button class="feedback-button"
+        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdF51aLO52lAAoM5_-B25dzXZ3gDHfCG2iZcxrqumjirRFsuA/viewform?usp=sharing', '_blank')">
+        Give Us Feedback
+      </button>
     </div>
 
 

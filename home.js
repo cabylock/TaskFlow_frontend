@@ -24,7 +24,7 @@ buttonIds.forEach(buttonId => {
 document.addEventListener('DOMContentLoaded', function () {
 
     //    update profile
-
+    
 
     fetch('https://back-end-ocean.up.railway.app/user/get_user', {
         method: 'POST',

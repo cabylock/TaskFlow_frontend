@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Register</title>
+    <title>Task Flow</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <meta name="google-signin-client_id" content="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com">
-    
+    <meta name="google-signin-client_id"
+        content="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com">
+
 </head>
+
 <body>
+
+    <!-- background -->
+
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
     <!-- Navbar -->
     <div class="navbar">
         <div class="nav-left">
-            <button id="home" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;">Home</button>
-            <button id="about" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;" >About Us</button>
-            <button id="contact" style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;" >Contact Us</button>
+            <button id="home"
+                style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;">Home</button>
+            <button id="about"
+                style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;">About
+                Us</button>
+            <button id="contact"
+                style="background-color: transparent; border-color: transparent; cursor: pointer; font-size: 16px;">Contact
+                Us</button>
             <div class="social-icons">
                 <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
         <div class="right">
@@ -32,19 +61,21 @@
 
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-    <div id="homeSection" class="section" >
+    <div id="homeSection" class="section">
         <h2>Welcome to TaskFlow</h2>
-        
-        <p>TaskFlow is a task management application that helps you stay organized and productive. Sign up now to start managing your tasks!</p>
-        
-        
+
+        <p>TaskFlow is a task management application that helps you stay organized and productive. Sign up now to start
+            managing your tasks!</p>
+
+
     </div>
 
     <div id="aboutSection" class="section" style="display: none;">
         <h2>About Us</h2>
-        <p>We are a team of passionate developers dedicated to making task management easier and more efficient. Our mission is to help you stay organized and productive.</p>
+        <p>We are a team of passionate developers dedicated to making task management easier and more efficient. Our
+            mission is to help you stay organized and productive.</p>
     </div>
-    
+
     <div id="contactSection" class="section" style="display: none;">
         <h2>Contact Us</h2>
         <p>Have any questions or feedback? We'd love to hear from you! Reach out to us at:</p>
@@ -57,21 +88,23 @@
     </div>
 
     <div class="container" style="display: none;">
-        
 
 
 
-        
+
+
         <div id="registerSection" class="form-section">
             <h2>Register</h2>
             <form id="registerForm">
                 <div class="form-group">
                     <label for="registerUsername">Username</label>
-                    <input type="text" id="registerUsername" name="username" placeholder="Please Enter Username" minlength="6" required>
+                    <input type="text" id="registerUsername" name="username" placeholder="Please Enter Username"
+                        minlength="6" required>
                 </div>
                 <div class="form-group">
                     <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" name="password" placeholder="Please Enter Password" minlength="6" required>
+                    <input type="password" id="registerPassword" name="password" placeholder="Please Enter Password"
+                        minlength="6" required>
                 </div>
                 <div class="form-group">
                     <label for="registerEmail">Email</label>
@@ -84,8 +117,8 @@
 
             <!-- login with google -->
             <div id="g_id_onload"
-            data-client_id="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com"
-            data-callback="onSignIn">
+                data-client_id="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com"
+                data-callback="onSignIn">
             </div>
             <div class="g_id_signin" data-type="standard"></div>
 
@@ -96,11 +129,13 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label for="loginUsername">Username</label>
-                    <input type="text" id="loginUsername" name="username" placeholder="Please Enter Username" minlength="6" required>
+                    <input type="text" id="loginUsername" name="username" placeholder="Please Enter Username"
+                        minlength="6" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" name="password" placeholder="Please Enter Password" minlength="6" required>
+                    <input type="password" id="loginPassword" name="password" placeholder="Please Enter Password"
+                        minlength="6" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Login</button>
@@ -108,8 +143,8 @@
             </form>
             <!-- login with google -->
             <div id="g_id_onload"
-            data-client_id="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com"
-            data-callback="onSignIn">
+                data-client_id="699971109619-itr28i4cfacuds87lm4msup8s4lfpjhh.apps.googleusercontent.com"
+                data-callback="onSignIn">
             </div>
             <div class="g_id_signin" data-type="standard"></div>
         </div>
@@ -118,4 +153,5 @@
     <script src="login.js"></script>
 
 </body>
+
 </html>

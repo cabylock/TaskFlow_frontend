@@ -60,12 +60,13 @@
    padding: 15px 32px; /* Padding around the text */
    text-align: center; /* Center the text */
    text-decoration: none; /* Remove underline */
+   height: 50px;
    display: block; /* Make the button a block element */
    font-size: 16px; /* Font size */
    border-radius: 8px; /* Rounded corners */
    cursor: pointer; /* Pointer cursor on hover */
    transition: background-color 0.3s ease, transform 0.3s ease; /* Animation */
-   margin: 20px auto; /* Center the button and add margin */
+   /* Center the button and add margin */
 }
 
 /* Hover effect */

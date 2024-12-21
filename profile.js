@@ -1,6 +1,9 @@
 
+
+
+
 document.getElementById('uploadButton').addEventListener('click', function() {
-   event.preventDefault();
+   
    
    document.getElementById('profileInput').click(); // Mở hộp thoại chọn file
 });
