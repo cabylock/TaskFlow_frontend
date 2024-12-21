@@ -1,19 +1,20 @@
-/* Container chính */
+
 #flashcard_main, #quiz_main {
     width: 95%;
     margin-top: 40px;
     margin-left: 85px;
-    justify-content: space-between; /* Chia đều không gian giữa flashcard_box và quiz_box */
-    gap: 30px; /* Khoảng cách giữa flashcard_box và quiz_box */
+    justify-content: space-between;
+    gap: 30px; 
     
 }
 
 
 
-/* Box Flashcard */
+
 #flashcard_box {
-    flex: 1; /* Chiếm 50% chiều rộng */
-    max-width:1000px;
+
+   width:1000px;
+   height:600px;
     background: linear-gradient(135deg, #ffecd2, #fcb69f);
     padding: 20px;
     border-radius: 15px;
@@ -22,7 +23,8 @@
     flex-direction: row;
     gap:20px;
     align-items: center;
-    margin-left:85px;
+   margin-left:200px;
+   margin-top:20px
   
 }
 
@@ -33,10 +35,10 @@
     font-weight: bold;
 }
 
-/* Box Quiz */
+
 #quiz_box {
-    flex: 1; /* Chiếm 50% chiều rộng */
-    max-width: 700px;
+    flex: 1; 
+    max-width: 600px;
     background: linear-gradient(135deg, #89f7fe, #66a6ff);
     padding: 20px;
     border-radius: 15px;
@@ -44,6 +46,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right:80px;
+  
 }
 
 #quiz_box h2 {
@@ -52,7 +56,7 @@
     margin-bottom: 15px;
 }
 
-/* Phần Flashcard */
+
 .flashcard-container {
     width: 100%;
     max-width: 600px;
@@ -83,7 +87,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Ẩn mặt sau khi xoay */
+  backface-visibility: hidden; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,17 +97,17 @@
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
    background: linear-gradient(135deg, #00c6ff, #9d91b0);
-    word-wrap: break-word; /* Đảm bảo từ dài sẽ xuống dòng */
-    word-break: break-word; /* Bẻ từ nếu quá dài */
-    white-space: pre-line; /* Giữ lại các dòng mới và tự động xuống dòng */
+    word-wrap: break-word; 
+    word-break: break-word; 
+    white-space: pre-line; 
     padding:10px;
      display: flex;
-  flex-direction: column; /* Arrange items horizontally */
-  gap: 10px; /* Add some space between the number and text */
+  flex-direction: column; 
+  gap: 10px; 
 }
 .flashcard .back {
  
-  transform: rotateY(180deg); /* Chỉ xoay mặt sau, không cần xoay thêm lần thứ hai */
+  transform: rotateY(180deg); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,17 +115,17 @@
   font-weight: bold;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backface-visibility: hidden; /* Đảm bảo mặt sau không hiển thị khi xoay */
+  backface-visibility: hidden; 
    background: linear-gradient(135deg, #ff6a00, #ee0979);
 }
 
 
  .flashcard.flip {
-  transform: rotateY(180deg); /* Xoay Flashcard khi lật */
+  transform: rotateY(180deg);
 }
 
 
-/* Nút Flashcard */
+
 .flashcard-buttons {
     display: flex;
     gap: 10px;
@@ -150,7 +154,7 @@
 }
 
 
-/* Form Thêm Từ Vựng */
+
 .add-form {
     width: 400px;
     background: linear-gradient(135deg, #c3e8ff, #eaf9ff,#fa709a,#fee140); /* Gradient xanh nhạt */
@@ -201,10 +205,9 @@ h5{
     background: linear-gradient(135deg, #dde0de, #07b9ff);
 }
 
-/* Phần Quiz */
-.quiz-display {
-    width: 500px;
 
+.quiz-display {
+    width: 600px;
     padding: 20px;
     border-radius: 15px;
     background: linear-gradient(135deg, #fa709a, #fee140);
@@ -213,6 +216,7 @@ h5{
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    margin-left:80px;
 }
 
 .quiz-display h1 {
@@ -261,11 +265,9 @@ h5{
     background: linear-gradient(135deg, #3e8e41, #aaff00);
 }
 
-/* Form Thêm Câu Hỏi */
 .quiz-form {
     width: 400px;
-    background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Gradient xanh tươi */
-    border-radius: 20px;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
     padding: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -301,16 +303,16 @@ h5{
 .quiz-form button:hover {
     background: linear-gradient(135deg, #e64a19, #ff6f00);
 }
-/* Đảm bảo câu hỏi và đáp án xuống dòng nếu cần */
+
 #question-text, 
 #answer-A-button, 
 #answer-B-button, 
 #answer-C-button, 
 #answer-D-button {
-  white-space: pre-line; /* Giữ lại các dòng mới và tự động xuống dòng */
-  word-wrap: break-word; /* Nếu từ quá dài, tự động xuống dòng */
-  word-break: break-word; /* Đảm bảo các từ dài không bị vỡ */
-  max-width: 100%; /* Đảm bảo chiều rộng tối đa */
+  white-space: pre-line; 
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%; 
   padding: 10px;
   box-sizing: border-box;
 }

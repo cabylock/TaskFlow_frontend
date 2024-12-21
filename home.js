@@ -45,9 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (result.profile_image) {
                 document.getElementsByClassName('profileImage').src = `${result.profile_image}`;
             }
-            else {
-                document.getElementsByClassName('profileImage').src = 'assests/bg.jpg'
-            }
+           
 
         })
         .catch(error => {

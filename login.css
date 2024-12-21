@@ -6,6 +6,8 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     margin: 0;
+   
+
 }
 
 .container {
@@ -81,11 +83,7 @@ h2 {
     background-color: #0056b3;
 }
 
-body{
-    background-image:url("assests/bg.jpg");
-    background-size: cover;
-    background-position: center center;
-}
+
 
 .g_id_signin-container {
     display: flex;

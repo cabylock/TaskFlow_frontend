@@ -92,3 +92,46 @@ const statusPieChart = new Chart(document.getElementById('statusPieChart'), {
     }
   }
 });
+
+// === Đếm số ngày truy cập liên tiếp ===
+const today = new Date();
+const todayKey = today.toISOString().split('T')[0]; // Định dạng YYYY-MM-DD
+
+// Lấy thông tin từ localStorage
+const lastVisit = localStorage.getItem('lastVisit');
+let streak = parseInt(localStorage.getItem('streak') || '0', 10);
+
+// Kiểm tra trạng thái
+if (lastVisit === todayKey) {
+    console.log('Bạn đã truy cập hôm nay. Chuỗi ngày liên tiếp không thay đổi.');
+} else {
+    const lastVisitDate = lastVisit ? new Date(lastVisit) : null;
+
+    if (lastVisitDate && isYesterday(lastVisitDate, today)) {
+        streak += 1;
+    } else {
+        streak = 1; // Đặt lại chuỗi ngày nếu không liên tiếp
+    }
+
+    // Cập nhật ngày truy cập và chuỗi ngày liên tiếp
+    localStorage.setItem('lastVisit', todayKey);
+    localStorage.setItem('streak', streak);
+}
+
+// Cập nhật UI
+document.getElementById('streakDays').textContent = streak;
+
+// Hàm kiểm tra nếu `date1` là ngày hôm qua của `date2`
+function isYesterday(date1, date2) {
+    const diffTime = date2 - date1;
+    const diffDays = diffTime / (1000 * 60 * 60 * 24); // Đổi chênh lệch thời gian sang số ngày
+    return diffDays === 1;
+}
+
+const streakIcon = document.getElementById('streakIcon');
+const maxSize = 5;  // Kích thước tối đa của ngọn lửa
+const minSize = 2;  // Kích thước tối thiểu của ngọn lửa
+const maxStreak = 30;  // Số streak tối đa cho kích thước lớn nhất
+
+let fireSize = minSize + (streak / maxStreak) * (maxSize - minSize);
+streakIcon.style.fontSize = `${fireSize}rem`;
