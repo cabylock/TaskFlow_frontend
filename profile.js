@@ -24,7 +24,7 @@ document.getElementById('profileInput').addEventListener('change', function(even
                 if (result) {
                     document.getElementsByClassName('profileImage').src = `${result.url}`;
                 } else {
-                    alert('Error uploading profile image');
+                    showToast("Fail",'Error uploading profile image');
                 }
             })
             
@@ -68,13 +68,13 @@ document.getElementById('profileForm').addEventListener('submit', function(event
     .then(result => {
         if(result)
         {
-            showToast('Profile updated successfully');
+            showToast("",'Profile updated successfully');
             
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Error connection');
+        showToast("Fail",'Error connection');
     });
 
    

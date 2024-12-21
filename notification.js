@@ -162,11 +162,11 @@ function scheduleNotifications() {
 
         // Hiển thị thông báo nếu thời gian thỏa mãn điều kiện
         if (notificationTimeStart > now && notificationTimeStart <= now) {
-            showToast(`${event.name} will Start one ${DateForNotification(eventStart)}`, 2000);
+            showToast("",`${event.name} will Start one ${DateForNotification(eventStart)}`, 2000);
         }
         
         if (notificationTimeEnd > now && notificationTimeEnd <= now) {
-            showToast(`${event.name} will End on ${DateForNotification(eventEnd)}`,2000);
+            showToast("",`${event.name} will End on ${DateForNotification(eventEnd)}`,2000);
         }
     });
 }
@@ -176,7 +176,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
     const notifyTime = document.getElementById("notify_time").value;
     localStorage.setItem("notify_days", notifyDays);
     localStorage.setItem("notify_time", notifyTime);
-    showToast(`Save notification: before ${notifyDays} at ${notifyTime}`);
+    showToast("",`Save notification: before ${notifyDays} at ${notifyTime}`);
 
     // Schedule or update notifications via backend
     Tasks.forEach((event) => {
@@ -237,11 +237,11 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                 })
                 .then(response => response.json())
                 .then(data => {
-                    showToast(data.message);
+                    showToast("",data.message);
                 })
                 .catch(error => {
                     console.error('Error cancelling notifications:', error);
-                    showToast("Error cancelling notifications");
+                    showToast("Fail","Error cancelling notifications");
                 });
             
                 showNotification = false;
@@ -286,11 +286,11 @@ document.getElementById('clear_notification_settings').addEventListener('click',
     })
     .then(response => response.json())
     .then(data => {
-        showToast(data.message);
+        showToast("",data.message);
     })
     .catch(error => {
         console.error('Error cancelling notifications:', error);
-        showToast("Error cancelling notifications");
+        showToast("Fail","Error cancelling notifications");
     });
 
     showNotification = false;

@@ -67,15 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(result => {
-                alert(result.message || result);
                 if(result.message === 'Register successfully') {
+                    showToast("",result.message || result);
                 registerSection.style.display = 'none';
                 
                 loginSection.style.display = 'block';}
+                else
+                {
+                    showToast("Fail",result.message || result);
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Error connection");
+                showToast("Fail","Error connection");
             });
     });
 
@@ -101,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.assign('home.html');
                    
                 } else {
-                    alert(result.message || result);
+                    showToast("",result.message);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Error connection");
+                showToast("Fail",'Error connection');
             });
     });
 
@@ -136,11 +140,64 @@ function onSignIn(response)
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Error connection");
+                showToast("Fail","Error connection");
             });
       
       
 }
+
+
+
+//message bar
+const toast = document.querySelector(".toast"),
+    closeIcon = document.querySelector(".close"),
+    progress = document.querySelector(".progress"),
+    text2 = document.querySelector(".text-2");
+    text1 = document.querySelector(".text-1");
+    let timer1, timer2;
+
+
+// Hàm hiển thị thông báo với tham số message
+function showToast(text1 ="success",message,time = 5000) {
+    
+
+    
+
+
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+
+    
+    setTimeout(() => {
+        text1.textContent = text1;
+        text2.textContent = message; // Gán nội dung thông báo vào text-2
+
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, time); // 5s = 5000 milliseconds
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        }, time + 300); // 5s + 300ms = 5300 milliseconds
+    }, 0); // Đặt lại tiến trình ngay lập tức
+
+}
+
+// Khi người dùng bấm vào biểu tượng đóng, ẩn thông báo
+closeIcon.addEventListener("click", () => {
+    toast.classList.remove("active");
+
+    setTimeout(() => {
+        progress.classList.remove("active");
+    }, 300);
+
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+});
+
 
 
 

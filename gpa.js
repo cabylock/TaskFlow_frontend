@@ -52,7 +52,7 @@ function addSubjectToList() {
     isNaN(midtermScore) ||
     isNaN(finalScore)
   ) {
-    alert("Vui lòng điền đầy đủ thông tin!");
+    showToast("Fail","Please fill in all fields", 3000);
     return;
   }
 

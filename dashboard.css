@@ -44,7 +44,7 @@
 .card {
   width: 350px;
   height: fit-content;
-  background-color: #bbf35a;
+  background-color: #7ec7e7;
   border-radius: 15px;
   box-shadow: 0px 0px 10px #efefef;
 }
@@ -111,7 +111,7 @@
 }
 
 .current-day {
-  background-color: rgb(112, 71, 235);
+  background-color: rgb(16, 68, 240);
   color: #f8f7fa;
   border-radius: 15px;
   font-weight: 700;

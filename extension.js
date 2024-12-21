@@ -88,7 +88,7 @@ document.getElementById("save-question-button").addEventListener("click", functi
     if (
       !question ||!answerA ||!answerB ||!answerC ||!answerD ||!correctAnswer
     ) {
-      alert("Vui lòng điền đầy đủ thông tin và chọn đáp án đúng!");
+      showToast("fail","Please fill in all fields!");
       return;
     }
 
@@ -109,7 +109,7 @@ document.getElementById("save-question-button").addEventListener("click", functi
     document.getElementById("answer-D-input").value = "";
     document.getElementById("correct-answer-input").value = "";
 
-    alert("Câu hỏi đã được thêm thành công!");
+    showToast("","Question saved successfully!");
     updateQuiz(); // Cập nhật quiz sau khi thêm câu hỏi mới
   });
 
@@ -188,7 +188,7 @@ document.getElementById("next-question-button").addEventListener("click", functi
       currentQuestionIndex++;
       updateQuiz(); // Cập nhật quiz khi chuyển qua câu hỏi tiếp theo
     } else {
-      alert("Bạn đã hoàn thành tất cả câu hỏi!");
+      showToast("","You've reached the end of the quiz!");
     }
   });
 
