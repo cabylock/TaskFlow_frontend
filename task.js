@@ -262,7 +262,14 @@ document.addEventListener('DOMContentLoaded', async() => {
       body: JSON.stringify({ username }),
     });
     const data = await response.json();
-    Tasks = data.content.Tasks || [];
+    // Check if data and data.content exist
+    if (data && data.content) 
+      {
+      Tasks = data.content.Tasks || [];
+    } 
+    else {
+      Tasks = []; // Initialize Tasks as an empty array if not present
+      }
   }
 
   // Hàm lưu dự án vào database

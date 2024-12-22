@@ -199,7 +199,7 @@ addPlaylistButton.addEventListener('click', function () {
     } 
     else {
         
-        showToast("",'Please enter playlist name');
+        showToast("Fail",'Please enter playlist name');
     }
 });
 
@@ -218,7 +218,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         .then(response => response.json())
         .then(data => {
 
-            playlists = data.content.playlists || [];
+            
+            if(data && data.content && data.content.playlists){
+                playlists = data.content.playlists || [];
+                
+            }
+            else{
+                playlists = [];
+            }
+
 
             renderPlaylists();
         });
