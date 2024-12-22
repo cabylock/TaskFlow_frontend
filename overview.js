@@ -1,5 +1,6 @@
 
-
+let endedDailyChart;
+let endedMonthlyChart;
 
 document.addEventListener('DOMContentLoaded', async function () {
   // === Đếm số ngày truy cập liên tiếp ===
@@ -54,8 +55,119 @@ document.addEventListener('DOMContentLoaded', async function () {
   // === Lấy dữ liệu từ database ===
   await getProjectsFromDatabase();
   
+  renderChart();
+
   
 
+});
+
+
+
+function renderChart()
+{
+  
+  
+  // Trích xuất dữ liệu daily
+  const { highData: highDailyData, mediumData: mediumDailyData, lowData: lowDailyData } = getDailyData(Tasks, 31);
+  
+  // Trích xuất dữ liệu monthly
+  const { highData: highMonthlyData, mediumData: mediumMonthlyData, lowData: lowMonthlyData } = getMonthlyData(Tasks);
+  
+  // Hủy biểu đồ cũ nếu tồn tại
+  if (endedDailyChart) {
+    endedDailyChart.destroy();
+  }
+
+  if (endedMonthlyChart) {
+    endedMonthlyChart.destroy();
+  }
+
+  // === Biểu đồ cột chồng: Task trạng thái theo ngày trong tháng ===
+   endedDailyChart = new Chart(document.getElementById('endedDailyChart'), {
+    type: 'bar',
+    data: {
+      labels: Array.from({ length: 31 }, (_, i) => `Day ${i + 1}`),
+      datasets: [
+        {
+          label: 'High',
+          data: highDailyData,
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Medium',
+          data: mediumDailyData,
+          backgroundColor: 'rgba(255, 159, 64, 0.6)',
+          borderColor: 'rgba(255, 159, 64, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Low',
+          data: lowDailyData,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true, position: 'top' },
+        title: { display: true, text: 'Tasks by Level (Daily)' }
+      },
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, beginAtZero: true }
+      }
+    }
+  });
+  
+  // === Biểu đồ cột chồng: Task trạng thái theo tháng trong năm ===
+   endedMonthlyChart = new Chart(document.getElementById('endedMonthlyChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'High',
+          data: highMonthlyData,
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Medium',
+          data: mediumMonthlyData,
+          backgroundColor: 'rgba(255, 159, 64, 0.6)',
+          borderColor: 'rgba(255, 159, 64, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Low',
+          data: lowMonthlyData,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true, position: 'top' },
+        title: { display: true, text: 'Tasks by Level (Monthly)' }
+      },
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, beginAtZero: true }
+      }
+    }
+  });
+}
+
+  
   // Hàm trích xuất dữ liệu daily
   const getDailyData = (tasks, daysInMonth) => {
     const highData = Array(daysInMonth).fill(0);
@@ -99,99 +211,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   
     return { highData, mediumData, lowData };
   };
-  
-  // Trích xuất dữ liệu daily
-  const { highData: highDailyData, mediumData: mediumDailyData, lowData: lowDailyData } = getDailyData(Tasks, 31);
-  
-  // Trích xuất dữ liệu monthly
-  const { highData: highMonthlyData, mediumData: mediumMonthlyData, lowData: lowMonthlyData } = getMonthlyData(Tasks);
-  
-  // === Biểu đồ cột chồng: Task trạng thái theo ngày trong tháng ===
-  const endedDailyChart = new Chart(document.getElementById('endedDailyChart'), {
-    type: 'bar',
-    data: {
-      labels: Array.from({ length: 31 }, (_, i) => `Day ${i + 1}`),
-      datasets: [
-        {
-          label: 'High',
-          data: highDailyData,
-          backgroundColor: 'rgba(255, 99, 132, 0.6)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Medium',
-          data: mediumDailyData,
-          backgroundColor: 'rgba(255, 159, 64, 0.6)',
-          borderColor: 'rgba(255, 159, 64, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Low',
-          data: lowDailyData,
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: true, position: 'top' },
-        title: { display: true, text: 'Tasks by Level (Daily)' }
-      },
-      scales: {
-        x: { stacked: true },
-        y: { stacked: true, beginAtZero: true }
-      }
-    }
-  });
-  
-  // === Biểu đồ cột chồng: Task trạng thái theo tháng trong năm ===
-  const endedMonthlyChart = new Chart(document.getElementById('endedMonthlyChart'), {
-    type: 'bar',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [
-        {
-          label: 'High',
-          data: highMonthlyData,
-          backgroundColor: 'rgba(255, 99, 132, 0.6)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Medium',
-          data: mediumMonthlyData,
-          backgroundColor: 'rgba(255, 159, 64, 0.6)',
-          borderColor: 'rgba(255, 159, 64, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Low',
-          data: lowMonthlyData,
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: true, position: 'top' },
-        title: { display: true, text: 'Tasks by Level (Monthly)' }
-      },
-      scales: {
-        x: { stacked: true },
-        y: { stacked: true, beginAtZero: true }
-      }
-    }
-  });
-  
-
-});
 
 function isYesterday(date1, date2) {
   const diffTime = date2 - date1;

@@ -169,36 +169,38 @@ document.addEventListener('DOMContentLoaded', async() => {
         });
 
         // Xử lý sự kiện thay đổi tên dự án
-       projectItem.querySelector('.project-name').addEventListener('blur', (e) => {
+       projectItem.querySelector('.project-name').addEventListener('blur', async(e) => {
           project.name = e.target.innerText;
-          saveProjectsToDatabase(); // Cập nhật database
+          await saveProjectsToDatabase(); // Cập nhật database
           showToast("","Update successfully");
         });
 
         // Xử lý sự kiện thay đổi level
-        projectItem.querySelector('.level-select').addEventListener('change', (e) => {
+        projectItem.querySelector('.level-select').addEventListener('change', async(e) => {
           project.level = e.target.value;
-          saveProjectsToDatabase(); // Cập nhật database
+          await saveProjectsToDatabase(); // Cập nhật database
           showToast("","Update successfully");
         });
 
 
         // Xử lý nút Save
-        projectItem.querySelector('.save-button').addEventListener('click', () => {
+        projectItem.querySelector('.save-button').addEventListener('click',async () => {
           project.note = projectItem.querySelector('.note-input').value;
           project.level = projectItem.querySelector('.level-select').value;
           project.startDate = projectItem.querySelector('.start-date').value;
           project.endDate = projectItem.querySelector('.end-date').value;
-          saveProjectsToDatabase(); // Cập nhật database
+          await saveProjectsToDatabase(); // Cập nhật database
+          renderCalendar();
+          renderChart();
           showToast("","Update successfully");
           // renderProjectList();
         });
 
         // Xử lý nút Delete
-        projectItem.querySelector('.delete-button').addEventListener('click', () => {
+        projectItem.querySelector('.delete-button').addEventListener('click',async () => {
           Tasks.splice(projectIndex, 1);
           renderProjectList();
-          saveProjectsToDatabase(); // Cập nhật database
+          await saveProjectsToDatabase(); // Cập nhật database
           showToast("","Update successfully");
         });
 
@@ -284,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async() => {
       .catch(error => {
         console.error('Failed to save Tasks:', error);
       });
-      
+
   }
 
   function truncateFilename(filename, maxLength = 8) {
