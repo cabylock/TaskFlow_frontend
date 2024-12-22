@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // === Lấy dữ liệu từ database ===
   await getProjectsFromDatabase();
-  console.log(Tasks);
   
+  
+
   // Hàm trích xuất dữ liệu daily
   const getDailyData = (tasks, daysInMonth) => {
     const highData = Array(daysInMonth).fill(0);

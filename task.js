@@ -277,7 +277,8 @@ document.addEventListener('DOMContentLoaded', async() => {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'Project created successfully' || data.message === 'Project updated successfully') {
-          
+          Tasks = data.project.Tasks|| [];
+          console.log(Tasks);
         }
       })
       .catch(error => {

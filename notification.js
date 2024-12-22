@@ -1,4 +1,4 @@
-const showNotification = true;
+let showNotification = true;
 
 
 const notificationList= document.querySelector(".notification_list")
@@ -198,7 +198,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
          notificationTimeEnd.setHours(notifyHour, notifyMinute, 0, 0);
  
          const now = new Date();
-         console.log(notifyTime, now);
+        
         
         
 
@@ -216,7 +216,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                     text: `The event ${event.name} is scheduled to start on ${DateForNotification(eventStart)}.`
                 })
             }).then(response => response.json())
-              .then(data => console.log(data.message))
+              .then()
               .catch(error => console.error('Error:', error));
 
 
@@ -252,6 +252,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
         }
 
         if (notificationTimeEnd > now) {
+            
             fetch('https://back-end-ocean.up.railway.app/email/schedule', {
                 method: 'POST',
                 headers: {
@@ -265,7 +266,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
                     text: `The event ${event.name} is scheduled to end on ${DateForNotification(eventEnd)}.`
                 })
             }).then(response => response.json())
-              .then(data => console.log(data.message))
+              .then()
               .catch(error => console.error('Error:', error));
         }
     });

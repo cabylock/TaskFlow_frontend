@@ -198,7 +198,7 @@ addPlaylistButton.addEventListener('click', function () {
         renderPlaylists(); // Render lại giao diện
     } 
     else {
-        console.log('Please enter playlist name');
+        
         showToast("",'Please enter playlist name');
     }
 });
