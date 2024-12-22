@@ -277,14 +277,16 @@ document.addEventListener('DOMContentLoaded', async() => {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'Project created successfully' || data.message === 'Project updated successfully') {
-          Tasks = data.project.Tasks|| [];
+          
           console.log(Tasks);
         }
       })
       .catch(error => {
         console.error('Failed to save Tasks:', error);
       });
+      
   }
+
   function truncateFilename(filename, maxLength = 8) {
     if (filename.length > maxLength) {
       return filename.substring(0, maxLength) + '...';

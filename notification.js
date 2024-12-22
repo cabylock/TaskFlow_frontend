@@ -144,6 +144,7 @@ function scheduleNotifications() {
     const notifyTime = document.getElementById("notify_time").value;
     
     const now = new Date();
+    now.setHours(now.getHours()-7); // UTC+7
 
     Tasks.forEach((event) => {
         const eventStart = new Date(event.startDate);
@@ -162,11 +163,11 @@ function scheduleNotifications() {
 
         // Hiển thị thông báo nếu thời gian thỏa mãn điều kiện
         if (notificationTimeStart > now && notificationTimeStart <= now) {
-            showToast("",`${event.name} will Start one ${DateForNotification(eventStart)}`, 2000);
+            showToast("",`${event.name} will Start one ${DateForNotification(eventStart)}`, 10000);
         }
         
         if (notificationTimeEnd > now && notificationTimeEnd <= now) {
-            showToast("",`${event.name} will End on ${DateForNotification(eventEnd)}`,2000);
+            showToast("",`${event.name} will End on ${DateForNotification(eventEnd)}`,10000);
         }
     });
 }
@@ -177,7 +178,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
     localStorage.setItem("notify_days", notifyDays);
     localStorage.setItem("notify_time", notifyTime);
     showToast("",`Save notification: before ${notifyDays} at ${notifyTime}`);
-
+    showNotification = true;
     // Schedule or update notifications via backend
     Tasks.forEach((event) => {
         if (event.completed_start || event.completed_end) {
