@@ -8,21 +8,24 @@ document.getElementById('uploadButton').addEventListener('click', function() {
    document.getElementById('profileInput').click(); // Mở hộp thoại chọn file
 });
 
-document.getElementById('profileInput').addEventListener('change', function(event) {
+document.getElementById('profileInput').addEventListener('change', async function(event) {
    const file = event.target.files[0];
    if (file && file.type.startsWith('image/') ) {
        const formData = new FormData();
        
          formData.append('file', file);
          formData.append('folder', 'profile');
-            fetch('https://back-end-ocean.up.railway.app/storage/upload', {
+        await    fetch('https://back-end-ocean.up.railway.app/storage/upload', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(result => {
                 if (result) {
-                    document.getElementsByClassName('profileImage').src = `${result.url}`;
+                    
+                    document.getElementsByClassName('profileImage')[0].src = result.url;
+                    showToast("",'Profile image uploaded successfully');
+                    
                 } else {
                     showToast("Fail",'Error uploading profile image');
                 }
