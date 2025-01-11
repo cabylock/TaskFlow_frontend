@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', async() => {
        projectItem.querySelector('.project-name').addEventListener('blur', async(e) => {
           project.name = e.target.innerText;
           await saveProjectsToDatabase(); // Cập nhật database
+          filterEvents();
           showToast("","Update successfully");
         });
 
@@ -179,6 +180,7 @@ document.addEventListener('DOMContentLoaded', async() => {
         projectItem.querySelector('.level-select').addEventListener('change', async(e) => {
           project.level = e.target.value;
           await saveProjectsToDatabase(); // Cập nhật database
+          filterEvents();
           showToast("","Update successfully");
         });
 
@@ -192,6 +194,7 @@ document.addEventListener('DOMContentLoaded', async() => {
           await saveProjectsToDatabase(); // Cập nhật database
           renderCalendar();
           renderChart();
+          filterEvents();
           showToast("","Update successfully");
           // renderProjectList();
         });
@@ -201,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async() => {
           Tasks.splice(projectIndex, 1);
           renderProjectList();
           await saveProjectsToDatabase(); // Cập nhật database
+          filterEvents();
           showToast("","Update successfully");
         });
 
@@ -217,6 +221,7 @@ document.addEventListener('DOMContentLoaded', async() => {
               saveProjectsToDatabase(); // Cập nhật database
               renderProjectList(); // Cập nhật lại danh sách dự án sau khi xóa file
               showToast("","Update successfully");
+              filterEvents();
             } catch (error) {
               showToast("Fail",'Failed to delete file');
             }

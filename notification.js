@@ -177,7 +177,7 @@ document.getElementById("save_notification_settings").addEventListener("click", 
     const notifyTime = document.getElementById("notify_time").value;
     localStorage.setItem("notify_days", notifyDays);
     localStorage.setItem("notify_time", notifyTime);
-    showToast("",`Save notification: before ${notifyDays} at ${notifyTime}`);
+    showToast("",`Save notification: before ${notifyDays} ${notifyDays>1? "days" : "day"} at ${notifyTime}`);
     showNotification = true;
     // Schedule or update notifications via backend
     Tasks.forEach((event) => {
