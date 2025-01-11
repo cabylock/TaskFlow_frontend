@@ -159,13 +159,13 @@ function log_out() {
 const toast = document.querySelector(".toast"),
     closeIcon = document.querySelector(".close"),
     progress = document.querySelector(".progress"),
-    text2 = document.querySelector(".text-2");
+    text2 = document.querySelector(".text-2"),
     text1 = document.querySelector(".text-1");
     let timer1, timer2;
 
 
 // Hàm hiển thị thông báo với tham số message
-function showToast(text1="success",message,time = 5000) {
+function showToast(type="success",message,time = 5000) {
     
 
     
@@ -176,7 +176,7 @@ function showToast(text1="success",message,time = 5000) {
 
     
     setTimeout(() => {
-        text1.textContent = text1;
+        text1.textContent = type;
         text2.textContent = message; // Gán nội dung thông báo vào text-2
 
         toast.classList.add("active");
