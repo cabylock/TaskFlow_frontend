@@ -181,6 +181,10 @@ function showToast(type,message,time = 5000) {
         {
             text1.textContent = "Success";
         }
+        else
+        {
+            text1.textContent = type;
+        }
 
         text2.textContent = message; // Gán nội dung thông báo vào text-2
 

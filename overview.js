@@ -1,67 +1,46 @@
-
 let endedDailyChart;
 let endedMonthlyChart;
 
-document.addEventListener('DOMContentLoaded', async function () {
-  // === Đếm số ngày truy cập liên tiếp ===
+document.addEventListener('DOMContentLoaded', async () => {
   const today = new Date();
-  const todayKey = today.toISOString().split('T')[0]; // Định dạng YYYY-MM-DD
-  // Lấy thông tin từ localStorage
-  let streak = parseInt(localStorage.getItem('streak') || '0', 10);
+  const todayKey = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+  const lastVisit = localStorage.getItem('lastVisit');
+  let streak = parseInt(localStorage.getItem('streak'), 10) || 0;
 
-  let lastVisit = localStorage.getItem('lastVisit');
-  if (lastVisit === null) {
-    
-    localStorage.setItem('lastVisit', todayKey);
-    lastVisit = todayKey;
-    streak = 1;
-    
+  // Check if `date1` is the day before `date2`
+  function isYesterday(date1, date2) {
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    d1.setDate(d1.getDate() + 1);
+    return d1.toISOString().split('T')[0] === d2.toISOString().split('T')[0];
   }
 
-
-  // Kiểm tra trạng thái
-  if (lastVisit === todayKey) {
-    console.log('Bạn đã truy cập hôm nay. Chuỗi ngày liên tiếp không thay đổi.');
+  if (lastVisit && isYesterday(lastVisit, todayKey)) {
+    streak += 1; // Increment streak if last visit was yesterday
+  } else if (lastVisit !== todayKey) {
+    streak = 1; // Reset streak if last visit was not today or yesterday
   }
-  else {
-    const lastVisitDate = lastVisit ? new Date(lastVisit) : null;
 
-    if (lastVisitDate && isYesterday(lastVisitDate, today)) {
-      streak += 1;
-    } else {
-      streak = 1; // Đặt lại chuỗi ngày nếu không liên tiếp
-    }
-
-  }
-  // Cập nhật ngày truy cập và chuỗi ngày liên tiếp
+  // Update last visit and streak in local storage
   localStorage.setItem('lastVisit', todayKey);
   localStorage.setItem('streak', streak);
 
-  
-  // Cập nhật UI
+  // Update UI
   document.getElementById('streakDays').textContent = streak;
 
-  // Hàm kiểm tra nếu `date1` là ngày hôm qua của `date2`
-
-
   const streakIcon = document.getElementById('streakIcon');
-  const maxSize = 5;  // Kích thước tối đa của ngọn lửa
-  const minSize = 2;  // Kích thước tối thiểu của ngọn lửa
-  const maxStreak = 30;  // Số streak tối đa cho kích thước lớn nhất
+  const maxSize = 5;  // Maximum size of the flame
+  const minSize = 2;  // Minimum size of the flame
+  const maxStreak = 30;  // Maximum streak for the largest size
 
   let fireSize = minSize + (streak / maxStreak) * (maxSize - minSize);
   streakIcon.style.fontSize = `${fireSize}rem`;
 
-  // === Lấy dữ liệu từ database ===
+  // === Fetch data from database ===
   await getProjectsFromDatabase();
   
   renderChart();
-
-  
-
 });
-
-
 
 function renderChart()
 {
@@ -211,11 +190,5 @@ function renderChart()
   
     return { highData, mediumData, lowData };
   };
-
-function isYesterday(date1, date2) {
-  const diffTime = date2 - date1;
-  const diffDays = diffTime / (1000 * 60 * 60 * 24); // Đổi chênh lệch thời gian sang số ngày
-  return diffDays === 1;
-}
 
 
