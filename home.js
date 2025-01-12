@@ -165,7 +165,7 @@ const toast = document.querySelector(".toast"),
 
 
 // Hàm hiển thị thông báo với tham số message
-function showToast(type="success",message,time = 5000) {
+function showToast(type,message,time = 5000) {
     
 
     
@@ -176,7 +176,12 @@ function showToast(type="success",message,time = 5000) {
 
     
     setTimeout(() => {
-        text1.textContent = type;
+        
+        if (type =="")
+        {
+            text1.textContent = "Success";
+        }
+
         text2.textContent = message; // Gán nội dung thông báo vào text-2
 
         toast.classList.add("active");

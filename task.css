@@ -228,29 +228,28 @@
   margin-bottom: 2px;
   overflow-y: auto;
 }
-
 .project-upload input {
   font-size: 14px;
   color: #331c86;
   display: block;
   margin-bottom: 2px;
-  width: 100px;
+  width: 100%;
 }
 
 .file-upload-wrapper {
   display: flex;
   align-items: center;
   position: relative;
+  width: 200px; /* Set the desired width of the wrapper */
+  height: 40px; /* Set the desired height of the wrapper */
 }
 
 .file-upload {
   margin-right: 10px;
   opacity: 0; /* Ẩn input mặc định */
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 50%;
-  height: 50%;
+  width: 100%; /* Set width to 100% of the wrapper */
+  height: 100%; /* Set height to 100% of the wrapper */
   cursor: pointer;
 }
 
